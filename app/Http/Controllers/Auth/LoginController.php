@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class LoginController extends Controller
 {
@@ -27,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -52,8 +54,9 @@ class LoginController extends Controller
             }else{
                 return redirect()->route('home');
             }
-        } else {
-            return redirect()->route('home')->with('error','Email-address and Password wrong');
+        }else {
+            Alert::error('กรุณากรอกอีเมลล์พาสเวิร์ดใหม่!');
+            return back();
         }
     }
 }
