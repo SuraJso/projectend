@@ -10,10 +10,27 @@
               <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">Offer of the day</a><a href="#" class="ml-1">Get flat 35% off on orders over $50!</a></div>
               <div class="col-lg-6 text-center text-lg-right">
                 <ul class="menu list-inline mb-0">
-                  <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
-                  <li class="list-inline-item"><a href="register.html">Register</a></li>
-                  <li class="list-inline-item"><a href="contact.html">Contact</a></li>
-                  <li class="list-inline-item"><a href="#">Recently viewed</a></li>
+                @guest
+                <li class="nav-item">
+                    @if (Route::has('login'))
+                    <li class="list-inline-item"><a class="nav-link-inline" href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                    @endif
+                    @if (Route::has('register'))
+                    <li class="list-inline-item"><a class="nav-link-inline" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                    @endif
+                    </li>
+                @else
+                <li class="nav-item">
+                    <li class="list-inline-item"><a href="#">{{ Auth::user()->name }}</a></li>
+                    <li class="list-inline-item"><a href="{{ route('logout')}}"
+                     onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
+                @endif
+
                 </ul>
               </div>
             </div>
@@ -60,6 +77,7 @@
 
 
         </div>
+
         <nav class="navbar navbar-expand-lg">
           <div class="container"><a href="index.html" class="navbar-brand home"><img src="img/logo.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="img/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">

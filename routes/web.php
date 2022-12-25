@@ -17,13 +17,13 @@ use RealRashid\SweetAlert\Facades\Alert;
 |
 */
 
-Route::get('/one', function () {
+Route::get('/', function () {
     return view('index');
 });
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['is_admin','auth'])->group(function () {
     Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminhome'])->name('admin.home');
