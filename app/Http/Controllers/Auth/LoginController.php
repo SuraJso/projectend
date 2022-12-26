@@ -49,6 +49,7 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
         if (auth()->attempt(array('email'=> $input['email'],'password'=> $input['password']))) {
+            toast('Login success','success');
             if(auth()->user()->status == 1){
                 return redirect()->route('admin.home');
             }else{
