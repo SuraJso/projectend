@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap-font/css/bootstrap.min.css')}}">
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css')}}">
     <!-- Google fonts - Roboto -->
@@ -43,8 +43,8 @@
 
     @include('layouts.footer')
     <!-- JavaScript files-->
-    <script src="{{ asset('vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('vendor/jquery-font/jquery.min.js')}}"></script>
+    <script src="{{ asset('vendor/bootstrap-font/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ asset('vendor/jquery.cookie/jquery.cookie.js')}}"> </script>
     <script src="{{ asset('vendor/owl.carousel/owl.carousel.min.js')}}"></script>
     <script src="{{ asset('vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js')}}"></script>

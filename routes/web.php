@@ -18,7 +18,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('/index');
 });
 
 Auth::routes();
