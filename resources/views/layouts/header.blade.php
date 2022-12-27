@@ -86,7 +86,7 @@
             </div>
             <div id="navigation" class="collapse navbar-collapse">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a href="#" class="nav-link {{ Request::is('home') ? 'active' : '' }}">Home</a></li>
+                <li class="nav-item"><a href="{{ route('home1') }}" class="nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a></li>
                 <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Men<b class="caret"></b></a>
                   <ul class="dropdown-menu megamenu">
                     <li>

@@ -19,7 +19,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 Route::get('/', function () {
     return view('/index');
-});
+})->name('home1');
 
 Auth::routes();
 
@@ -27,5 +27,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['is_admin','auth'])->group(function () {
     Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminhome'])->name('admin.home');
+
+    Route::get('admin/product', [\App\Http\Controllers\Admin\ProductController::class, 'index'])->name('admin.product');
+    Route::get('admin/insertproduct', [\App\Http\Controllers\Admin\ProductController::class, 'viewinsertproduct'])->name('admin.insertproduct');
 
 });

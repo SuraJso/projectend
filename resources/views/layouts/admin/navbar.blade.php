@@ -30,7 +30,7 @@
                 <span class="nav-link-title">Dashboards</span>
               </a> --}}
               <div class="nav-item">
-                <a class="nav-link " href="./apps-kanban.html" data-placement="left">
+                <a class="nav-link {{ Request::is('admin.home') ? 'active' : '' }}  " href="{{ route('admin.home') }}"  data-placement="left">
                   <i class="bi-house-door nav-icon"></i>
                   <span class="nav-link-title">Dashboards</span>
                 </a>
@@ -53,13 +53,13 @@
 
               <!-- Collapse -->
               <div class="nav-item">
-                <a class="nav-link dropdown-toggle active" href="#navbarVerticalMenuPagesEcommerceMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceMenu" aria-expanded="true" aria-controls="navbarVerticalMenuPagesEcommerceMenu">
+                <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceMenu" aria-expanded="true" aria-controls="navbarVerticalMenuPagesEcommerceMenu">
                   <i class="bi-basket nav-icon"></i>
                   <span class="nav-link-title">E-commerce</span>
                 </a>
 
                 <div id="navbarVerticalMenuPagesEcommerceMenu" class="nav-collapse collapse show" data-bs-parent="#navbarVerticalMenuPagesMenu">
-                  <a class="nav-link active" href="./ecommerce.html">Overview</a>
+                  <a class="nav-link" href="./ecommerce.html">Overview</a>
 
                   <div id="navbarVerticalMenuPagesMenuEcommerce">
                     <!-- Collapse -->
@@ -69,9 +69,9 @@
                       </a>
 
                       <div id="navbarVerticalMenuPagesEcommerceProductsMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenuEcommerce">
-                        <a class="nav-link " href="./ecommerce-products.html">Products</a>
-                        <a class="nav-link " href="./ecommerce-product-details.html">Product Details</a>
-                        <a class="nav-link " href="./ecommerce-add-product.html">Add Product</a>
+                        <a class="nav-link {{ Request::is('admin.product') ? 'active' : '' }}  " href="{{ route('admin.product') }}">Products</a>
+                        {{-- <a class="nav-link " href="./ecommerce-product-details.html">Product Details</a> --}}
+                        <a class="nav-link {{ Request::is('admin.insertproduct') ? 'active' : '' }}  " href="{{ route('admin.insertproduct') }}">Add Product</a>
                       </div>
                     </div>
                     <!-- End Collapse -->
