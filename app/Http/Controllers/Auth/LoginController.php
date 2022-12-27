@@ -50,7 +50,7 @@ class LoginController extends Controller
         ]);
         if (auth()->attempt(array('email'=> $input['email'],'password'=> $input['password']))) {
             toast('Login success','success');
-            if(auth()->user()->status == 1){
+            if(auth()->user()->typeuserid == 2){
                 return redirect()->route('admin.home');
             }else{
                 return redirect()->route('home');
