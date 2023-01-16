@@ -18,8 +18,9 @@ use RealRashid\SweetAlert\Facades\Alert;
 */
 
 Route::get('/', function () {
-    return view('/index');
+    return view('/auth/passwords/email');
 })->name('home1');
+
 
 Auth::routes();
 
