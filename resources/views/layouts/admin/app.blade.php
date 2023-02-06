@@ -196,7 +196,8 @@
         })
       })()
     </script>
-
+<script src="{{ asset('https://code.jquery.com/jquery-3.5.1.min.js') }}"></script>
   <!-- End Style Switcher JS -->
+  @yield('script')
 </body>
 </html>

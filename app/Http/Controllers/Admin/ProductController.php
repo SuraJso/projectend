@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
@@ -14,7 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product');
+        $products = Product::all();
+        return view('admin.product',['products'=>$products]);
     }
 
     public function viewinsertproduct()
@@ -40,7 +43,38 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string',
+            'price' => 'required|integer',
+        ], [
+            'name.required' => 'กรุณากรอกข้อมูล',
+            'price.required' => 'กรุณากรอกข้อมูล',
+            'price.integer'  => 'กรุณากรอกเป็นตัวเลขเท่านั้น',
+        ]);
+        try {
+
+            if($request->file('image')){
+                $file= $request->file('image');
+                $filename= date('YmdHi').$file->getClientOriginalName();
+                $file-> move(public_path('public/product/img'), $filename);
+                $data['image']= $filename;
+            } else {
+                $data['image']= 'noimg.png';
+            }
+            $product = new Product;
+            $product->name = $request->input('name');
+            $product->price = $request->input('price');
+            $product->img = $data['image'];
+            $product->typeproductid = $request->input('typeproduct');
+            $product->detail = $request->input('detail');
+            $product->save();
+            toast('Insert success','success');
+            return view('admin.insertproduct');
+        } catch (\Throwable $e) {
+            report($e);
+            Alert::error('กรุณากรอกข้อมูลใหม่!');
+            return false;
+        }
     }
 
     /**
@@ -62,7 +96,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('admin.editproduct',['product'=>$product]);
     }
 
     /**
@@ -74,7 +109,44 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string',
+            'price' => 'required|integer',
+        ], [
+            'name.required' => 'กรุณากรอกข้อมูล',
+            'price.required' => 'กรุณากรอกข้อมูล',
+            'price.integer'  => 'กรุณากรอกเป็นตัวเลขเท่านั้น',
+        ]);
+        try {
+            $product = Product::findOrFail($id);
+
+            if($request->file('image')){
+
+                $file= $request->file('image');
+                $filename= date('YmdHi').$file->getClientOriginalName();
+                $file-> move(public_path('public/product/img'), $filename);
+                $data['image']= $filename;
+
+
+            } else {
+                $data['image']= 'noimg.png';
+            }
+
+            $product->update([
+                'name' => $request->input('name'),
+                'price' => $request->input('price'),
+                'img' => $data['image'],
+                'typeproductid' => $request->input('typeproduct'),
+                'detail' => $request->input('detail'),
+            ]);
+
+            toast('Update success','success');
+            return redirect()->back();
+        } catch (\Throwable $e) {
+            report($e);
+            Alert::error('กรุณากรอกข้อมูลใหม่!');
+            return false;
+        }
     }
 
     /**
@@ -85,6 +157,15 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Product::destroy($id);
+
+            toast('Delete success','success');
+            return redirect()->back();
+        } catch (\Throwable $e) {
+            report($e);
+            Alert::error('กรุณาลองใหม่!');
+            return false;
+        }
     }
 }

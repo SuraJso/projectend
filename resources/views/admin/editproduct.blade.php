@@ -42,13 +42,13 @@
 
           <!-- Body -->
           <div class="card-body">
-            <form method="POST" enctype="multipart/form-data" id="image-upload-preview" action="{{ url('admin/insertproduct') }}" >
+            <form method="POST" enctype="multipart/form-data" id="image-upload-preview" action="{{ url('admin/insertproduct/update',$product->id) }}" >
                 @csrf
             <!-- Form -->
             <div class="mb-4">
               <label for="productNameLabel" class="form-label">Name</label>
               {{-- <i class="bi-question-circle text-body ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Products are the goods or services you sell."></i> --}}
-              <input type="text" class="form-control" name="name" id="name" placeholder="ชื่อ" aria-label="ชื่อ" required>
+              <input type="text" class="form-control" name="name" id="name" placeholder="ชื่อ" aria-label="ชื่อ" value="{{ $product->name }}" required>
                     {{-- @error('name') <div class="alert alert-danger">{{ $message }}</div> @enderror --}}
             </div>
             <!-- End Form -->
@@ -59,7 +59,7 @@
                 <div class="mb-4">
                   <label for="SKULabel" class="form-label">Price</label>
 
-                  <input type="text" class="form-control" name="price" id="price" placeholder="ราคา" aria-label="ราคา" required>
+                  <input type="text" class="form-control" name="price" id="price" placeholder="ราคา" aria-label="ราคา" value="{{ $product->price }}" required>
                 @error('price') <div class="alert alert-danger">{{ $message }}</div> @enderror
                 </div>
                 <!-- End Form -->
@@ -72,7 +72,7 @@
                   <label for="weightLabel" class="form-label">ProductType</label>
 
                   <div class="input-group">
-                    <input type="text" class="form-control" name="typeproduct" id="typeproduct" placeholder="ประเภทสินค้า" aria-label="ประเภทสินค้า" required>
+                    <input type="text" class="form-control" name="typeproduct" id="typeproduct" placeholder="ประเภทสินค้า" aria-label="ประเภทสินค้า"  value="{{ $product->typeproductid }}" required>
 
                   </div>
 
@@ -96,7 +96,7 @@
                 </div>
                 <!-- End Col -->
                 <div class="col-md-12 mb-2">
-                    <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                    <img id="preview-image-before-upload" src="{{ url('public/product/img/'.$product->img) }}"
                         alt="preview image" style="max-height: 250px;">
                 </div>
             </div>
@@ -104,7 +104,7 @@
 
             <div class="row mb-4">
                 <label class="form-label">Detail <span class="form-label-secondary">(รายละเอียดสินค้า)</span></label>
-                <textarea id="detail" type="text" class="form-control @error('detail') is-invalid @enderror" name="detail" value="{{ old('detail') }}" required autocomplete="detail" autofocus></textarea>
+                <textarea id="detail" type="text" class="form-control @error('detail') is-invalid @enderror" name="detail" value="{{ $product->detail }}" required autocomplete="detail" autofocus>{{ $product->detail }}</textarea>
             </div>
 
             <div class="row">
