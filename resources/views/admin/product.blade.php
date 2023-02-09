@@ -309,7 +309,7 @@
             <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
               <div class="col-sm mb-2 mb-sm-0">
                 <div class="d-flex justify-content-center justify-content-sm-start align-items-center">
-                  <span class="me-2">Showing:</span>
+        {{--      <span class="me-2">Showing:</span>
 
                   <!-- Select -->
                   <div class="tom-select-custom">
@@ -328,7 +328,7 @@
                   <span class="text-secondary me-2">of</span>
 
                   <!-- Pagination Quantity -->
-                  <span id="datatableWithPaginationInfoTotalQty"></span>
+                  <span id="datatableWithPaginationInfoTotalQty"></span> --}}
                 </div>
               </div>
               <!-- End Col -->
@@ -337,6 +337,7 @@
                 <div class="d-flex justify-content-center justify-content-sm-end">
                   <!-- Pagination -->
                   <nav id="datatablePagination" aria-label="Activity pagination"></nav>
+                  {{ $products->links() }}
                 </div>
               </div>
               <!-- End Col -->

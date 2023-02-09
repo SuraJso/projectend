@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('place');
             $table->string('tel');
-            $table->string('status');
-            $table->unsignedBigInteger('typeuserid');
+            $table->string('status')->default(1);
+            $table->unsignedBigInteger('typeuserid')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

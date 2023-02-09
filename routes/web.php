@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\TypeproductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImportController;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -43,4 +45,6 @@ Route::middleware(['is_admin','auth'])->group(function () {
     Route::get('admin/inserttypeproduct/{id}',[\App\Http\Controllers\Admin\TypeproductController::class, 'edit'])->name('admin.inserttypeproduct.edit');
     Route::post('admin/inserttypeproduct/update/{id}',[\App\Http\Controllers\Admin\TypeproductController::class, 'update'])->name('admin.inserttypeproduct.update');
     Route::get('admin/inserttypeproduct/delete/{id}',[\App\Http\Controllers\Admin\TypeproductController::class, 'destroy'])->name('admin.inserttypeproduct.delete');
+
+    Route::resource('adminimport', ImportController::class);
 });

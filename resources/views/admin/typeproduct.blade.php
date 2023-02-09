@@ -303,10 +303,10 @@
             <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
               <div class="col-sm mb-2 mb-sm-0">
                 <div class="d-flex justify-content-center justify-content-sm-start align-items-center">
-                  <span class="me-2">Showing:</span>
+                  {{-- <span class="me-2">Showing:</span> --}}
 
                   <!-- Select -->
-                  <div class="tom-select-custom">
+                   {{-- <div class="tom-select-custom">
                     <select id="datatableEntries" class="js-select form-select form-select-borderless w-auto" autocomplete="off" data-hs-tom-select-options='{
                               "searchInDropdown": false,
                               "hideSearch": true
@@ -316,13 +316,12 @@
                       <option value="16">16</option>
                       <option value="18">18</option>
                     </select>
-                  </div>
+                  </div> --}}
                   <!-- End Select -->
-
-                  <span class="text-secondary me-2">of</span>
+                  {{-- <span class="text-secondary me-2">of</span> --}}
 
                   <!-- Pagination Quantity -->
-                  <span id="datatableWithPaginationInfoTotalQty"></span>
+                 <!-- <span id="datatableWithPaginationInfoTotalQty"></span> -->
                 </div>
               </div>
               <!-- End Col -->
@@ -330,7 +329,7 @@
               <div class="col-sm-auto">
                 <div class="d-flex justify-content-center justify-content-sm-end">
                   <!-- Pagination -->
-                  <nav id="datatablePagination" aria-label="Activity pagination"></nav>
+                  {{ $typeproduct->links() }}
                 </div>
               </div>
               <!-- End Col -->

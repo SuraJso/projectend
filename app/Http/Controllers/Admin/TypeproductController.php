@@ -16,7 +16,7 @@ class TypeproductController extends Controller
      */
     public function index()
     {
-        $typeproduct = Typeproduct::all();
+        $typeproduct = Typeproduct::paginate('10');
 
         $count = Typeproduct::all()->count();
         return view('admin.typeproduct',['typeproduct'=>$typeproduct,'count'=>$count]);
