@@ -1,5 +1,5 @@
 
-<div class="bg-dark">
+<div class="">
     <div class="content container" style="height: 25rem;">
       <!-- Page Header -->
       <div class="page-header page-header-light page-header-reset navbar-expand-lg">
@@ -7,16 +7,16 @@
           <div class="row align-items-center flex-grow-1">
             <div class="col">
               <!-- Logo -->
-              <a class="navbar-brand" href="../index.html" aria-label="Front">
-                <img class="navbar-brand-logo" src="../assets/svg/logos/logo-white.svg" alt="Logo">
-              </a>
+              {{-- <a class="navbar-brand" href="../index.html" aria-label="Front">
+                <img class="navbar-brand-logo" src="{{ url('../public/product/img/202302060833login') }}" alt="Logo">
+              </a> --}}
               <!-- End Logo -->
             </div>
 
             <div class="col-auto">
               <!-- Navbar -->
               <ul class="list-inline">
-                <li class="list-inline-item d-none d-sm-inline-block">
+                {{-- <li class="list-inline-item d-none d-sm-inline-block">
                   <!-- Notification -->
                   <div class="dropdown">
                     <button type="button" class="btn btn-ghost-light btn-icon rounded-circle" id="navbarNotificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-dropdown-animation>
@@ -422,9 +422,9 @@
                     </div>
                   </div>
                   <!-- End Notification -->
-                </li>
+                </li> --}}
 
-                <li class="list-inline-item d-none d-sm-inline-block">
+                {{-- <li class="list-inline-item d-none d-sm-inline-block">
                   <!-- Apps -->
                   <div class="dropdown">
                     <button type="button" class="btn btn-icon btn-ghost-light rounded-circle" id="navbarAppsDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
@@ -526,7 +526,7 @@
                     </div>
                   </div>
                   <!-- End Apps -->
-                </li>
+                </li> --}}
 
 
                 <li class="list-inline-item">
@@ -555,7 +555,7 @@
                       <div class="dropdown-divider"></div>
 
                       <!-- Dropdown -->
-                      <div class="dropdown">
+                      {{-- <div class="dropdown">
                         <a class="navbar-dropdown-submenu-item dropdown-item dropdown-toggle" href="javascript:;" id="navSubmenuPagesAccountDropdown1" data-bs-toggle="dropdown" aria-expanded="false">Set status</a>
 
                         <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu" aria-labelledby="navSubmenuPagesAccountDropdown1">
@@ -572,7 +572,7 @@
                           <a class="dropdown-item" href="#"> Reset status
                           </a>
                         </div>
-                      </div>
+                      </div> --}}
                       <!-- End Dropdown -->
 
                       <a class="dropdown-item" href="#">Profile &amp; account</a>
@@ -597,7 +597,7 @@
                       <div class="dropdown-divider"></div> --}}
 
                       <!-- Dropdown -->
-                      <div class="dropdown">
+                      {{-- <div class="dropdown">
                         <a class="navbar-dropdown-submenu-item dropdown-item dropdown-toggle" href="javascript:;" id="navSubmenuPagesAccountDropdown2" data-bs-toggle="dropdown" aria-expanded="false">Customization</a>
 
                         <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu" aria-labelledby="navSubmenuPagesAccountDropdown2">
@@ -613,10 +613,10 @@
                             <i class="bi-box-arrow-in-up-right"></i>
                           </a>
                         </div>
-                      </div>
+                      </div> --}}
                       <!-- End Dropdown -->
-
-                      <a class="dropdown-item" href="#">Manage team</a>
+{{--
+                      <a class="dropdown-item" href="#">Manage team</a> --}}
 
                       <div class="dropdown-divider"></div>
 

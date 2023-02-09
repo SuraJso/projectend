@@ -8,12 +8,12 @@
         <div class="col-sm mb-2 mb-sm-0">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-no-gutter">
-              <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('admin.product') }}">Products</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Add Product</li>
+              <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('admin.typeproduct') }}">TypeProduct</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Add TypeProduct</li>
             </ol>
           </nav>
 
-          <h1 class="page-header-title">Add Product</h1>
+          <h1 class="page-header-title">Add TypeProduct</h1>
 
           {{-- <div class="mt-2">
             <a class="text-body me-3" href="javascript:;">
@@ -36,30 +36,30 @@
         <div class="card mb-3 mb-lg-5">
           <!-- Header -->
           <div class="card-header">
-            <h4 class="card-header-title">Product information</h4>
+            <h4 class="card-header-title">TypeProduct information</h4>
           </div>
           <!-- End Header -->
 
           <!-- Body -->
           <div class="card-body">
-            <form method="POST" enctype="multipart/form-data" id="image-upload-preview" action="{{ url('admin/insertproduct/update',$product->id) }}" >
+            <form method="POST" enctype="multipart/form-data" id="image-upload-preview" action="{{ url('admin/inserttypeproduct/update',$typeproduct->id) }}" >
                 @csrf
             <!-- Form -->
             <div class="mb-4">
               <label for="productNameLabel" class="form-label">Name</label>
               {{-- <i class="bi-question-circle text-body ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Products are the goods or services you sell."></i> --}}
-              <input type="text" class="form-control" name="name" id="name" placeholder="ชื่อ" aria-label="ชื่อ" value="{{ $product->name }}" required>
+              <input type="text" class="form-control" name="name" id="name" placeholder="ชื่อ" value="{{ $typeproduct->name }}" aria-label="ชื่อ" required>
                     {{-- @error('name') <div class="alert alert-danger">{{ $message }}</div> @enderror --}}
             </div>
             <!-- End Form -->
 
-            <div class="row">
+            {{-- <div class="row">
               <div class="col-sm-6">
                 <!-- Form -->
                 <div class="mb-4">
                   <label for="SKULabel" class="form-label">Price</label>
 
-                  <input type="text" class="form-control" name="price" id="price" placeholder="ราคา" aria-label="ราคา" value="{{ $product->price }}" required>
+                  <input type="text" class="form-control" name="price" id="price" placeholder="ราคา" aria-label="ราคา" required>
                 @error('price') <div class="alert alert-danger">{{ $message }}</div> @enderror
                 </div>
                 <!-- End Form -->
@@ -72,23 +72,18 @@
                   <label for="weightLabel" class="form-label">ProductType</label>
 
                   <div class="input-group">
-                    {{-- <input type="text" class="form-control" name="typeproduct" id="typeproduct" placeholder="ประเภทสินค้า" aria-label="ประเภทสินค้า"  value="{{ $product->typeproductid }}" required> --}}
-                    <select class="form-control"  name="typeproduct" id="typeproduct">
-                        @foreach ($typeproduct as $item)
+                    <input type="text" class="form-control" name="typeproduct" id="typeproduct" placeholder="ประเภทสินค้า" aria-label="ประเภทสินค้า" required>
 
-                          <option @if ($product->typeproductid == $item->id) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
-                        @endforeach
-                    </select>
                   </div>
 
                 </div>
                 <!-- End Form -->
               </div>
               <!-- End Col -->
-            </div>
+            </div> --}}
             <!-- End Row -->
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-sm-12">
                   <!-- Form -->
                   <div class="mb-4">
@@ -101,16 +96,16 @@
                 </div>
                 <!-- End Col -->
                 <div class="col-md-12 mb-2">
-                    <img id="preview-image-before-upload" src="{{ url('public/product/img/'.$product->img) }}"
+                    <img id="preview-image-before-upload" src="{{ url('public/product/img/noimg.png') }}"
                         alt="preview image" style="max-height: 250px;">
                 </div>
-            </div>
+            </div> --}}
             <!-- End Row -->
 
-            <div class="row mb-4">
+            {{-- <div class="row mb-4">
                 <label class="form-label">Detail <span class="form-label-secondary">(รายละเอียดสินค้า)</span></label>
-                <textarea id="detail" type="text" class="form-control @error('detail') is-invalid @enderror" name="detail" value="{{ $product->detail }}" required autocomplete="detail" autofocus>{{ $product->detail }}</textarea>
-            </div>
+                <textarea id="detail" type="text" class="form-control @error('detail') is-invalid @enderror" name="detail" value="{{ old('detail') }}" required autocomplete="detail" autofocus></textarea>
+            </div> --}}
 
             <div class="row">
 

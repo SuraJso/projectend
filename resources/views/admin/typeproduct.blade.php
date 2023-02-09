@@ -7,7 +7,7 @@
         <div class="page-header">
           <div class="row align-items-center mb-3">
             <div class="col-sm mb-2 mb-sm-0">
-              <h1 class="page-header-title">Products <span class="badge bg-soft-dark text-dark ms-2">{{ $count }}</span></h1>
+              <h1 class="page-header-title">Typeproduct <span class="badge bg-soft-dark text-dark ms-2">{{ $count }}</span></h1>
 
               {{-- <div class="mt-2">
                 <a class="text-body me-3" href="javascript:;" data-bs-toggle="modal" data-bs-target="#exportProductsModal">
@@ -21,7 +21,7 @@
             <!-- End Col -->
 
             <div class="col-sm-auto">
-              <a class="btn btn-primary" href="{{ route('admin.insertproduct') }}">Add product</a>
+              <a class="btn btn-primary" href="{{ route('admin.inserttypeproduct') }}">Add Typeproduct</a>
             </div>
             <!-- End Col -->
           </div>
@@ -44,7 +44,7 @@
             <!-- Nav -->
             <ul class="nav nav-tabs page-header-tabs" id="pageHeaderTab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" href="#">All products</a>
+                <a class="nav-link active" href="#">All typeproduct</a>
               </li>
               {{-- <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Archived</a>
@@ -243,35 +243,29 @@
                   <th scope="col" class="table-column-pe-0">
                     Number
                   </th>
-                  <th class="table-column-ps-0">Product</th>
-                  <th>Detail</th>
-                  <th>Typeproduct</th>
-                  <th>Price</th>
+                  <th class="table-column-ps-0">Name</th>
                   <th>Actions</th>
                 </tr>
               </thead>
 
               <tbody>
-                @foreach ($products as $key=>$product)
+                @foreach ($typeproduct as $key=>$item)
                   <td class="table-column-pe-0">
                         {{ ++$key }}
                   </td>
                   <td class="table-column-ps-0">
                     {{-- <a class="d-flex align-items-center" href="./ecommerce-product-details.html"> --}}
-                      <div class="flex-shrink-0">
+                      {{-- <div class="flex-shrink-0">
                         <img class="avatar avatar-lg" src="{{ url('public/product/img/'.$product->img) }}" alt="Image Description">
-                      </div>
+                      </div> --}}
                       <div class="flex-grow-1 ms-3">
-                        <h5 class="text-inherit mb-0">{{ $product->name }}</h5>
+                        <h5 class="text-inherit mb-0">{{ $item->name }}</h5>
                       </div>
                     {{-- </a> --}}
                   </td>
-                  <td>{{ $product->detail }}</td>
-                  <td>{{ $product->typeproduct->name }}</td>
-                  <td>{{ $product->price }} บาท</td>
                   <td>
                     <div class="btn-group" role="group">
-                      <a class="btn btn-white btn-sm" href="{{ route('admin.insertproduct.edit',$product->id) }}">
+                      <a class="btn btn-white btn-sm" href="{{ route('admin.inserttypeproduct.edit',$item->id) }}">
                         <i class="bi-pencil-fill me-1"></i> Edit
                       </a>
 
@@ -280,7 +274,7 @@
                         <button type="button" class="btn btn-white btn-icon btn-sm dropdown-toggle dropdown-toggle-empty" id="productsEditDropdown1" data-bs-toggle="dropdown" aria-expanded="false"></button>
 
                         <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="productsEditDropdown1">
-                          <a class="dropdown-item" href="{{ route('admin.insertproduct.delete',$product->id) }}">
+                          <a class="dropdown-item" href="{{ route('admin.inserttypeproduct.delete',$item->id) }}">
                             <i class="bi-trash dropdown-item-icon"></i> Delete
                           </a>
                           {{-- <a class="dropdown-item" href="#">

@@ -5,25 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Typeproduct extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'id',
         'name',
-        'detail',
-        'img',
-        'price',
-        'typeproductid',
     ];
 
     protected $hidden = [
         'id',
     ];
 
-    public function typeproduct() {
-        return $this->belongsTo(\App\Models\Typeproduct::class,'typeproductid');
+    public function product() {
+        return $this->hasMany(\App\Models\Product::class,'id');
     }
-
 }

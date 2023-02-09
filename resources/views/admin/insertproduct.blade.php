@@ -72,7 +72,12 @@
                   <label for="weightLabel" class="form-label">ProductType</label>
 
                   <div class="input-group">
-                    <input type="text" class="form-control" name="typeproduct" id="typeproduct" placeholder="ประเภทสินค้า" aria-label="ประเภทสินค้า" required>
+                    {{-- <input type="text" class="form-control" name="typeproduct" id="typeproduct" placeholder="ประเภทสินค้า" aria-label="ประเภทสินค้า" required> --}}
+                    <select class="form-control"  name="typeproduct" id="typeproduct">
+                    @foreach ($typeproduct as $item)
+                      <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    @endforeach
+                    </select>
 
                   </div>
 
@@ -96,7 +101,7 @@
                 </div>
                 <!-- End Col -->
                 <div class="col-md-12 mb-2">
-                    <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                    <img id="preview-image-before-upload" src="{{ url('public/product/img/noimg.png') }}"
                         alt="preview image" style="max-height: 250px;">
                 </div>
             </div>

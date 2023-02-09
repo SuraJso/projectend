@@ -119,7 +119,7 @@
 </script>
 </head>
 
-<body class="bg-dark has-navbar-vertical-aside navbar-vertical-aside-show-xl   footer-offset">
+<body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl   footer-offset">
     <!-- sweetalert -->
     @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 

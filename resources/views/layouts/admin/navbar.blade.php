@@ -3,12 +3,12 @@
       <div class="navbar-vertical-footer-offset">
         <!-- Logo -->
 
-        <a class="navbar-brand" href="./index.html" aria-label="Front">
-          <img class="navbar-brand-logo" src="./assets/svg/logos/logo.svg" alt="Logo" data-hs-theme-appearance="default">
-          <img class="navbar-brand-logo" src="./assets/svg/logos-light/logo.svg" alt="Logo" data-hs-theme-appearance="dark">
-          <img class="navbar-brand-logo-mini" src="./assets/svg/logos/logo-short.svg" alt="Logo" data-hs-theme-appearance="default">
-          <img class="navbar-brand-logo-mini" src="./assets/svg/logos-light/logo-short.svg" alt="Logo" data-hs-theme-appearance="dark">
-        </a>
+        {{-- <a class="navbar-brand" href="./index.html" aria-label="Front">
+          <img class="navbar-brand-logo" src="{{ url('public/img/logo.png') }}" alt="Logo" data-hs-theme-appearance="default">
+          <img class="navbar-brand-logo" src="{{ url('public/img/logo.png') }}" alt="Logo" data-hs-theme-appearance="dark">
+          <img class="navbar-brand-logo-mini" src="{{ url('public/img/logo.png') }}" alt="Logo" data-hs-theme-appearance="default">
+          <img class="navbar-brand-logo-mini" src="{{ url('public/img/logo.png') }}" alt="Logo" data-hs-theme-appearance="dark">
+        </a> --}}
 
         <!-- End Logo -->
 
@@ -59,7 +59,7 @@
                 </a>
 
                 <div id="navbarVerticalMenuPagesEcommerceMenu" class="nav-collapse collapse show" data-bs-parent="#navbarVerticalMenuPagesMenu">
-                  <a class="nav-link" href="./ecommerce.html">Overview</a>
+                  {{-- <a class="nav-link" href="./ecommerce.html">Overview</a> --}}
 
                   <div id="navbarVerticalMenuPagesMenuEcommerce">
                     <!-- Collapse -->
@@ -76,8 +76,23 @@
                     </div>
                     <!-- End Collapse -->
 
+
                     <!-- Collapse -->
                     <div class="nav-item">
+                        <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceTypeProductMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceTypeProductMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceProductTypeMenu">
+                          Typeproduct
+                        </a>
+
+                        <div id="navbarVerticalMenuPagesEcommerceTypeProductMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesEcommerceTypeProductMenu">
+                          <a class="nav-link {{ Request::is('admin.typeproduct') ? 'active' : '' }}  " href="{{ route('admin.typeproduct') }}">Typeproduct</a>
+                          {{-- <a class="nav-link " href="./ecommerce-product-details.html">Product Details</a> --}}
+                          <a class="nav-link {{ Request::is('admin.inserttypeproduct') ? 'active' : '' }}  " href="{{ route('admin.inserttypeproduct') }}">Add Typeproduct</a>
+                        </div>
+                    </div>
+                    <!-- End Collapse -->
+
+                    <!-- Collapse -->
+                    {{-- <div class="nav-item">
                       <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceOrdersMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceOrdersMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceOrdersMenu">
                         Orders
                       </a>
@@ -86,11 +101,11 @@
                         <a class="nav-link " href="./ecommerce-orders.html">Orders</a>
                         <a class="nav-link " href="./ecommerce-order-details.html">Order Details</a>
                       </div>
-                    </div>
+                    </div> --}}
                     <!-- End Collapse -->
 
                     <!-- Collapse -->
-                    <div class="nav-item">
+                    {{-- <div class="nav-item">
                       <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceCustomersMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceCustomersMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceCustomersMenu">
                         Customers
                       </a>
@@ -100,21 +115,21 @@
                         <a class="nav-link " href="./ecommerce-customer-details.html">Customer Details</a>
                         <a class="nav-link " href="./ecommerce-add-customers.html">Add Customers</a>
                       </div>
-                    </div>
+                    </div> --}}
                     <!-- End Collapse -->
                   </div>
 
-                  <a class="nav-link " href="./ecommerce-referrals.html">Referrals</a>
+                  {{-- <a class="nav-link " href="./ecommerce-referrals.html">Referrals</a>
                   <a class="nav-link " href="./ecommerce-manage-reviews.html">Manage Reviews</a>
-                  <a class="nav-link " href="./ecommerce-checkout.html">Checkout</a>
+                  <a class="nav-link " href="./ecommerce-checkout.html">Checkout</a> --}}
                 </div>
               </div>
-              <div class="nav-item">
+              {{-- <div class="nav-item">
                 <a class="nav-link " href="./apps-kanban.html" data-placement="left">
                   <i class="bi-kanban nav-icon"></i>
                   <span class="nav-link-title">Kanban</span>
                 </a>
-              </div>
+              </div> --}}
               <!-- End Collapse -->
 
           </div>
