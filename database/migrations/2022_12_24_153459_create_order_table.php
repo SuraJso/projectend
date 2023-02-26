@@ -19,6 +19,7 @@ class CreateOrderTable extends Migration
             $table->string('img')->comment('สำหรับดูโอนตัง');
             $table->text('detail');
             $table->unsignedBigInteger('userid');
+            $table->decimal('total')->default(0);
             $table->timestamps();
         });
     }
