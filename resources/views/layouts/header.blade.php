@@ -86,7 +86,8 @@
             <div id="navigation" class="collapse navbar-collapse">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a href="{{ route('home1') }}" class="nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a></li>
-                <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Men<b class="caret"></b></a>
+                <li class="nav-item"><a href="{{ route('category') }}" class="nav-link {{ Request::is('category') ? 'active' : '' }}">Category</a></li>
+                {{-- <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Men<b class="caret"></b></a>
                   <ul class="dropdown-menu megamenu">
                     <li>
                       <div class="row">
@@ -233,13 +234,17 @@
                       </div>
                     </li>
                   </ul>
-                </li>
-                <li class="nav-item"><a href="#" class="nav-link {{ Request::is('profile') ? 'active' : '' }}">Profile</a></li>
+                </li> --}}
+
+                @guest
+                @else
+                 <li class="nav-item"><a href="#" class="nav-link {{ Request::is('profile') ? 'active' : '' }}">Profile</a></li>
+                @endif
               </ul>
               <div class="navbar-buttons d-flex justify-content-end">
                 <!-- /.nav-collapse-->
-                <div id="search-not-mobile" class="navbar-collapse collapse"></div><a data-toggle="collapse" href="#search" class="btn navbar-btn btn-primary d-none d-lg-inline-block"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></a>
-                <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block"><a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span>3 items in cart</span></a></div>
+                {{-- <div id="search-not-mobile" class="navbar-collapse collapse"></div><a data-toggle="collapse" href="#search" class="btn navbar-btn btn-primary d-none d-lg-inline-block"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></a> --}}
+                <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block"><a href="{{ route('cart') }}" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span>Cart</span></a></div>
               </div>
             </div>
           </div>

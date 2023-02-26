@@ -9,8 +9,6 @@
             <div id="main-slider" class="owl-carousel owl-theme">
               <div class="item"><img src="img/banner2.png" alt="" class="img-fluid"></div>
               <div class="item"><img src="img/banner.png" alt="" class="img-fluid"></div>
-              <div class="item"><img src="img/banner2.png" alt="" class="img-fluid"></div>
-              <div class="item"><img src="img/banner.png" alt="" class="img-fluid"></div>
             </div>
             <!-- /#main-slider-->
           </div>
@@ -20,7 +18,7 @@
       *** ADVANTAGES HOMEPAGE ***
       _________________________________________________________
       -->
-      <div id="advantages">
+      {{-- <div id="advantages">
         <div class="container">
           <div class="row mb-4">
             <div class="col-md-4">
@@ -48,7 +46,7 @@
           <!-- /.row-->
         </div>
         <!-- /.container-->
-      </div>
+      </div> --}}
       <!-- /#advantages-->
       <!-- *** ADVANTAGES END ***-->
       <!--
@@ -271,6 +269,7 @@
 
       <div class="container">
         <div class="product-slider owl-carousel owl-theme">
+        @foreach ($products as $item)
           <div class="item">
             <div class="product">
               <div class="flip-container">
@@ -280,13 +279,13 @@
                 </div>
               </div><a href="detail.html" class="invisible"><img src="img/products1.jpg" alt="" class="img-fluid"></a>
               <div class="text">
-                <h3><a href="detail.html">Fur coat with very but very very long name</a></h3>
+                <h3><a href="detail.html">{{ $item->name }}</a></h3>
                 <p class="price">
-                  <del></del>$143.00
+                  <del></del>{{ $item->price }} บาท
                 </p>
               </div>
               <!-- /.text-->
-              <div class="ribbon sale">
+              {{-- <div class="ribbon sale">
                 <div class="theribbon">SALE</div>
                 <div class="ribbon-background"></div>
               </div>
@@ -299,12 +298,14 @@
               <div class="ribbon gift">
                 <div class="theribbon">GIFT</div>
                 <div class="ribbon-background"></div>
-              </div>
+              </div> --}}
               <!-- /.ribbon-->
             </div>
             <!-- /.product-->
           </div>
-          <div class="item">
+        @endforeach
+
+          {{-- <div class="item">
             <div class="product">
               <div class="flip-container">
                 <div class="flipper">
@@ -354,122 +355,7 @@
               <!-- /.text-->
             </div>
             <!-- /.product-->
-          </div>
-          <div class="item">
-            <div class="product">
-              <div class="flip-container">
-                <div class="flipper">
-                  <div class="front"><a href="detail.html"><img src="img/products4.jpg" alt="" class="img-fluid"></a></div>
-                  <div class="back"><a href="detail.html"><img src="img/products4.jpg" alt="" class="img-fluid"></a></div>
-                </div>
-              </div><a href="detail.html" class="invisible"><img src="img/products4.jpg" alt="" class="img-fluid"></a>
-              <div class="text">
-                <h3><a href="detail.html">Black Blouse Versace</a></h3>
-                <p class="price">
-                  <del></del>$143.00
-                </p>
-              </div>
-              <!-- /.text-->
-            </div>
-            <!-- /.product-->
-          </div>
-          <div class="item">
-            <div class="product">
-              <div class="flip-container">
-                <div class="flipper">
-                  <div class="front"><a href="detail.html"><img src="img/products5.jpg" alt="" class="img-fluid"></a></div>
-                  <div class="back"><a href="detail.html"><img src="img/products5.jpg" alt="" class="img-fluid"></a></div>
-                </div>
-              </div><a href="detail.html" class="invisible"><img src="img/products5.jpg" alt="" class="img-fluid"></a>
-              <div class="text">
-                <h3><a href="detail.html">White Blouse Versace</a></h3>
-                <p class="price">
-                  <del></del>$143.00
-                </p>
-              </div>
-              <!-- /.text-->
-              <div class="ribbon new">
-                <div class="theribbon">NEW</div>
-                <div class="ribbon-background"></div>
-              </div>
-              <!-- /.ribbon-->
-            </div>
-            <!-- /.product-->
-          </div>
-          <div class="item">
-            <div class="product">
-              <div class="flip-container">
-                <div class="flipper">
-                  <div class="front"><a href="detail.html"><img src="img/products1.jpg" alt="" class="img-fluid"></a></div>
-                  <div class="back"><a href="detail.html"><img src="img/products1.jpg" alt="" class="img-fluid"></a></div>
-                </div>
-              </div><a href="detail.html" class="invisible"><img src="img/products1.jpg" alt="" class="img-fluid"></a>
-              <div class="text">
-                <h3><a href="detail.html">Fur coat</a></h3>
-                <p class="price">
-                  <del></del>$143.00
-                </p>
-              </div>
-              <!-- /.text-->
-              <div class="ribbon gift">
-                <div class="theribbon">GIFT</div>
-                <div class="ribbon-background"></div>
-              </div>
-              <!-- /.ribbon-->
-            </div>
-            <!-- /.product-->
-          </div>
-          <div class="item">
-            <div class="product">
-              <div class="flip-container">
-                <div class="flipper">
-                  <div class="front"><a href="detail.html"><img src="img/products2.jpg" alt="" class="img-fluid"></a></div>
-                  <div class="back"><a href="detail.html"><img src="img/products2.jpg" alt="" class="img-fluid"></a></div>
-                </div>
-              </div><a href="detail.html" class="invisible"><img src="img/products2.jpg" alt="" class="img-fluid"></a>
-              <div class="text">
-                <h3><a href="detail.html">White Blouse Armani</a></h3>
-                <p class="price">
-                  <del>$280</del>$143.00
-                </p>
-              </div>
-              <!-- /.text-->
-              <div class="ribbon sale">
-                <div class="theribbon">SALE</div>
-                <div class="ribbon-background"></div>
-              </div>
-              <!-- /.ribbon-->
-              <div class="ribbon new">
-                <div class="theribbon">NEW</div>
-                <div class="ribbon-background"></div>
-              </div>
-              <!-- /.ribbon-->
-              <div class="ribbon gift">
-                <div class="theribbon">GIFT</div>
-                <div class="ribbon-background"></div>
-              </div>
-              <!-- /.ribbon-->
-            </div>
-            <!-- /.product-->
-          </div>
-          <div class="item">
-            <div class="product">
-              <div class="flip-container">
-                <div class="flipper">
-                  <div class="front"><a href="detail.html"><img src="img/products3.jpg" alt="" class="img-fluid"></a></div>
-                  <div class="back"><a href="detail.html"><img src="img/products3.jpg" alt="" class="img-fluid"></a></div>
-                </div>
-              </div><a href="detail.html" class="invisible"><img src="img/products3.jpg" alt="" class="img-fluid"></a>
-              <div class="text">
-                <h3><a href="detail.html">Black Blouse Versace</a></h3>
-                <p class="price">
-                  <del></del>$143.00
-                </p>
-              </div>
-              <!-- /.text-->
-            </div>
-            <!-- /.product-->
-          </div>
+          </div> --}}
           <!-- /.product-slider-->
         </div>
         <!-- /.container-->
@@ -507,7 +393,7 @@
           </div>
         </div>
       </div> --}}
-      <div class="container">
+      {{-- <div class="container">
         <div class="col-md-12">
           <div id="blog-homepage" class="row">
             <div class="col-sm-6">
@@ -531,7 +417,7 @@
           </div>
           <!-- /#blog-homepage-->
         </div>
-      </div>
+      </div> --}}
       <!-- /.container-->
       <!-- *** BLOG HOMEPAGE END ***-->
     </div>

@@ -19,15 +19,17 @@ use RealRashid\SweetAlert\Facades\Alert;
 |
 */
 
-Route::get('/', function () {
-    return view('/index');
-})->name('home1');
+// Route::get('/', function () {
+//     return view('/index');
+// })->name('home1');
+
+Route::get('/', [App\Http\Controllers\FrontController::class, 'home'])->name('home1');
 
 Route::get('/reset', [App\Http\Controllers\EveryController::class, 'reset'])->name('reset');
-
+Route::get('/home', [App\Http\Controllers\FrontController::class, 'home'])->name('home');
+Route::get('/category', [App\Http\Controllers\CategoryController::class, 'index'])->name('category');
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
 
 Route::middleware(['is_admin','auth'])->group(function () {
     Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminhome'])->name('admin.home');
