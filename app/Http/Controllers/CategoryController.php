@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Typeproduct;
 class CategoryController extends Controller
 {
     /**
@@ -57,7 +58,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $typeproduct = Typeproduct::all();
+        return view('categorydetail',['product'=>$product,'typeproduct'=>$typeproduct]);
     }
 
     /**

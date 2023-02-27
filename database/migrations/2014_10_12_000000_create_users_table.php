@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('place');
             $table->string('tel');
             $table->string('status')->default(1);
-            $table->unsignedBigInteger('typeuserid')->nullable();
+            $table->unsignedBigInteger('typeuserid')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

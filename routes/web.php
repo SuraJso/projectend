@@ -28,12 +28,19 @@ Route::get('/', [App\Http\Controllers\FrontController::class, 'home'])->name('ho
 Route::get('/reset', [App\Http\Controllers\EveryController::class, 'reset'])->name('reset');
 Route::get('/home', [App\Http\Controllers\FrontController::class, 'home'])->name('home');
 Route::get('/category', [App\Http\Controllers\CategoryController::class, 'index'])->name('category');
+Route::get('/category/{id}',[\App\Http\Controllers\CategoryController::class, 'edit'])->name('categorydetail.edit');
 Auth::routes();
-Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
+});
+
+
 
 Route::middleware(['is_admin','auth'])->group(function () {
-    Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminhome'])->name('admin.home');
 
+    Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminhome'])->name('admin.home');
     Route::get('admin/product', [\App\Http\Controllers\Admin\ProductController::class,'index'])->name('admin.product');
     Route::get('admin/insertproduct', [\App\Http\Controllers\Admin\ProductController::class, 'viewinsertproduct'])->name('admin.insertproduct');
     Route::post('admin/insertproduct',[\App\Http\Controllers\Admin\ProductController::class, 'store']);
