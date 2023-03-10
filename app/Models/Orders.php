@@ -11,18 +11,24 @@ class Orders extends Model
 
     protected $fillable = [
         'id',
-        'name',
-        'detail',
+        'status',
         'img',
-        'price',
-        'typeproductid',
+        'detail',
+        'userid',
+        'total',
     ];
 
     protected $hidden = [
         'id',
     ];
 
-    public function typeproduct() {
-        return $this->belongsTo(\App\Models\Typeproduct::class,'typeproductid');
+    public function userid() {
+        return $this->belongsTo(\App\Models\User::class,'id');
     }
+
+    function order_details()
+    {
+        return $this->hasMany(Ordersdetails::class,'orderid');
+    }
+
 }

@@ -28,11 +28,15 @@
                 <!-- /.ribbon-->
               </div>
               <div class="col-md-6">
+                <form action="{{ route('cart.store') }}" method="post">
+                @csrf
+                <input type="hidden" name="product_id" placeholder="" value="{{ $product->id }}">
                 <div class="box">
                   <h1 class="text-center">{{ $product->name }}</h1>
                   <p class="price">{{ $product->price }} บาท</p>
-                  <p class="text-center buttons"><a href="{{ route('cart') }}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a></p>
+                  <p class="text-center buttons"><button class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</button></p></p>
                 </div>
+                </form>
                 <div data-slider-id="1" class="owl-thumbs">
                   <button class="owl-thumb-item"><img src="img/detailsquare.jpg" alt="" class="img-fluid"></button>
                   <button class="owl-thumb-item"><img src="img/detailsquare2.jpg" alt="" class="img-fluid"></button>

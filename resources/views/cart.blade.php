@@ -16,9 +16,9 @@
           </div>
           <div id="basket" class="col-lg-12">
             <div class="box">
-              <form method="post" action="checkout1.html">
+
                 <h1>Shopping cart</h1>
-                <p class="text-muted">You currently have 3 item(s) in your cart.</p>
+
                 <div class="table-responsive">
                   <table class="table">
                     <thead>
@@ -26,37 +26,48 @@
                         <th colspan="2">Product</th>
                         <th>Quantity</th>
                         <th>Unit price</th>
-                        <th>Total</th>
-                        <th>Delete</th>
+                        <th colspan="3" class="text-center">Action</th>
                       </tr>
                     </thead>
                     <tbody>
+                        @if ($order)
+                        @foreach ($order->order_details as $item)
                       <tr>
-                        <td><a href="#"><img src="img/detailsquare.jpg" alt="White Blouse Armani"></a></td>
-                        <td><a href="#">White Blouse Armani</a></td>
+                        <td><a href="#"><img src="{{ url('public/product/img/'.$item->img) }}" alt="{{ $item->product->name }}"></a></td>
+                        <td><a href="#">{{ $item->product->name }}</a></td>
                         <td>
-                          <input type="number" value="2" class="form-control">
+                            {{ $item->amount }}
                         </td>
-                        <td>$123.00</td>
-                        <td>$246.00</td>
-                        <td><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#"><img src="img/basketsquare.jpg" alt="Black Blouse Armani"></a></td>
-                        <td><a href="#">Black Blouse Armani</a></td>
-                        <td>
-                          <input type="number" value="1" class="form-control">
+                        <td>{{ $item->price }}</td>
+                        <td colspan="2">
+                            <div class="row text-center">
+                                <div class="col-6">
+                                        <form action="{{ route('cart.update', $order->id) }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="value" value="decrease">
+                                            <input type="hidden" name="product_id"
+                                                value="{{ $item->productid }}">
+                                            <button class="btn btn-outline-danger" type="submit">-</button>
+                                        </form>
+                                </div>
+                                <div class="col-6">
+                                    <form action="{{ route('cart.update', $order->id) }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="value" value="increase">
+                                        <input type="hidden" name="product_id"
+                                            value="{{ $item->productid }}">
+                                        <button class="btn btn-outline-success" type="submit">+</button>
+                                    </form>
+                                </div>
+                            </div>
                         </td>
-                        <td>$200.00</td>
-
-                        <td>$200.00</td>
-                        <td><a href="#"><i class="fa fa-trash-o"></i></a></td>
                       </tr>
+                      @endforeach
                     </tbody>
                     <tfoot>
                       <tr>
                         <th colspan="5">Total</th>
-                        <th colspan="2">$446.00</th>
+                        <th colspan="2">{{ $order->total }}</th>
                       </tr>
                     </tfoot>
                   </table>
@@ -65,10 +76,14 @@
                 <div class="box-footer d-flex justify-content-between flex-column flex-lg-row">
                   <div class="left"><a href="{{ route('category') }}" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i> Continue shopping</a></div>
                   <div class="right">
-                    <button type="submit" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></button>
+                    <form action="{{ route('cart.update', $order->id) }}" method="post">
+                        @csrf
+                        <input type="hidden" name="value" value="checkout">
+                        <button type="submit" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></button>
+                    </form>
                   </div>
                 </div>
-              </form>
+                @endif
             </div>
             <!-- /.box-->
           </div>

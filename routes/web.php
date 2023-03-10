@@ -33,6 +33,8 @@ Auth::routes();
 
 
 Route::middleware(['auth'])->group(function () {
+    Route::post('/cart/store', [App\Http\Controllers\CartController::class, 'store'])->name('cart.store');
+    Route::post('/cart/update/{order}', [App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
     Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
 });
 
