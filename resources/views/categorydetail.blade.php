@@ -21,9 +21,7 @@
             <div id="productMain" class="row">
               <div class="col-md-6">
                 <div data-slider-id="1" class="owl-carousel shop-detail-carousel">
-                  <div class="item"> <img src="img/detailbig1.jpg" alt="" class="img-fluid"></div>
-                  <div class="item"> <img src="img/detailbig2.jpg" alt="" class="img-fluid"></div>
-                  <div class="item"> <img src="img/detailbig3.jpg" alt="" class="img-fluid"></div>
+                  <div class="item"> <img src="{{ url('public/product/img/'.$product->img) }}" alt="" class="img-fluid"></div>
                 </div>
                 <!-- /.ribbon-->
               </div>

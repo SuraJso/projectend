@@ -274,12 +274,12 @@
             <div class="product">
               <div class="flip-container">
                 <div class="flipper">
-                  <div class="front"><a href="detail.html"><img src="img/products1.jpg" alt="" class="img-fluid"></a></div>
-                  <div class="back"><a href="detail.html"><img src="img/products1.jpg" alt="" class="img-fluid"></a></div>
+                  <div class="front"><a href="{{ route('categorydetail.edit',$item->id) }}"><img src="{{ url('public/product/img/'.$item->img) }}" alt="" class="img-fluid"></a></div>
+                  <div class="back"><a href="{{ route('categorydetail.edit',$item->id) }}"><img src="{{ url('public/product/img/'.$item->img) }}" alt="" class="img-fluid"></a></div>
                 </div>
-              </div><a href="detail.html" class="invisible"><img src="img/products1.jpg" alt="" class="img-fluid"></a>
+              </div><a href="{{ route('categorydetail.edit',$item->id) }}" class="invisible"><img src="{{ url('public/product/img/'.$item->img) }}" alt="" class="img-fluid"></a>
               <div class="text">
-                <h3><a href="detail.html">{{ $item->name }}</a></h3>
+                <h3><a href="{{ route('categorydetail.edit',$item->id) }}">{{ $item->name }}</a></h3>
                 <p class="price">
                   <del></del>{{ $item->price }} บาท
                 </p>

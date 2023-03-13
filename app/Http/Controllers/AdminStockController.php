@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Imports;
 use App\Models\Product;
+use App\Models\Stocks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ImportController extends Controller
+class AdminStockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +16,10 @@ class ImportController extends Controller
      */
     public function index()
     {
-        $import = Imports::paginate('10');
-        return view('admin.import')->with('import',$import);
+        $stock = Stocks::paginate('10');
+        $product = Product::all();
+        return view('admin.stock')->with('stock',$stock)->with('product',$product);
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -47,12 +47,12 @@ class ImportController extends Controller
         } else {
             $data['image']= 'noimg.png';
         }
-        $import = new Imports;
-        $import->shopname = $request->input('shopname');
-        $import->img = $data['image'];
-        $import->detail = $request->input('detail');
-        $import->userid = Auth::id();
-        $import->save();
+        $stock = new Stocks;
+        $stock->count = $request->input('count');
+        $stock->img = $data['image'];
+        $stock->productid = $request->input('product');
+        $stock->userid = Auth::id();
+        $stock->save();
         toast('Insert success','success');
         return redirect()->back();
     }

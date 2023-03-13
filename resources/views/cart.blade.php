@@ -33,7 +33,7 @@
                         @if ($order)
                         @foreach ($order->order_details as $item)
                       <tr>
-                        <td><a href="#"><img src="{{ url('public/product/img/'.$item->img) }}" alt="{{ $item->product->name }}"></a></td>
+                        <td><a href="#"><img src="{{ url('public/product/img/'.$item->product->img) }}" alt="{{ $item->product->name }}"></a></td>
                         <td><a href="#">{{ $item->product->name }}</a></td>
                         <td>
                             {{ $item->amount }}

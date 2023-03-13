@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\TypeproductController;
 use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\AdminStockController;
 use App\Http\Controllers\AdminTypeUserController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\CheckoutController;
@@ -71,5 +72,6 @@ Route::middleware(['is_admin','auth'])->group(function () {
     Route::resource('adminuser', AdminUserController::class);
     Route::resource('admintypeuser', AdminTypeUserController::class);
     Route::resource('adminorder', AdminOrderController::class);
+    Route::resource('adminstock', AdminStockController::class);
     Route::get('admin/insertimport', [\App\Http\Controllers\ImportController::class, 'addimport'])->name('admin.insertimport');
 });

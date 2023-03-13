@@ -66,24 +66,24 @@
               </div>
               <!-- End Col -->
 
-              <div class="col-sm-6">
+                <div class="col-sm-6">
                 <!-- Form -->
-                <div class="mb-4">
-                  <label for="weightLabel" class="form-label">ProductType</label>
+                    <div class="mb-4">
+                        <label for="weightLabel" class="form-label">ProductType</label>
 
-                  <div class="input-group">
-                    {{-- <input type="text" class="form-control" name="typeproduct" id="typeproduct" placeholder="ประเภทสินค้า" aria-label="ประเภทสินค้า" required> --}}
-                    <select class="form-control"  name="typeproduct" id="typeproduct">
-                    @foreach ($typeproduct as $item)
-                      <option value="{{ $item->id }}">{{ $item->name }}</option>
-                    @endforeach
-                    </select>
+                        <div class="input-group">
+                            {{-- <input type="text" class="form-control" name="typeproduct" id="typeproduct" placeholder="ประเภทสินค้า" aria-label="ประเภทสินค้า" required> --}}
+                            <select class="form-control"  name="typeproduct" id="typeproduct">
+                            @foreach ($typeproduct as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            @endforeach
+                            </select>
 
-                  </div>
+                        </div>
 
-                </div>
+                    </div>
                 <!-- End Form -->
-              </div>
+                </div>
               <!-- End Col -->
             </div>
             <!-- End Row -->

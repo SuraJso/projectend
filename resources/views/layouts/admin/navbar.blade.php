@@ -3,12 +3,6 @@
       <div class="navbar-vertical-footer-offset">
         <!-- Logo -->
 
-        {{-- <a class="navbar-brand" href="./index.html" aria-label="Front">
-          <img class="navbar-brand-logo" src="{{ url('public/img/logo.png') }}" alt="Logo" data-hs-theme-appearance="default">
-          <img class="navbar-brand-logo" src="{{ url('public/img/logo.png') }}" alt="Logo" data-hs-theme-appearance="dark">
-          <img class="navbar-brand-logo-mini" src="{{ url('public/img/logo.png') }}" alt="Logo" data-hs-theme-appearance="default">
-          <img class="navbar-brand-logo-mini" src="{{ url('public/img/logo.png') }}" alt="Logo" data-hs-theme-appearance="dark">
-        </a> --}}
 
         <!-- End Logo -->
 
@@ -24,21 +18,11 @@
         <div class="navbar-vertical-content">
           <div id="navbarVerticalMenu" class="nav nav-pills nav-vertical card-navbar-nav">
             <!-- Collapse -->
-            {{-- <div class="nav-item">
-              <a class="nav-link dropdown-toggle " href="#navbarVerticalMenuDashboards" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuDashboards" aria-expanded="false" aria-controls="navbarVerticalMenuDashboards">
-                <i class="bi-house-door nav-icon"></i>
-                <span class="nav-link-title">Dashboards</span>
-              </a> --}}
-              <div class="nav-item">
+            <div class="nav-item">
                 <a class="nav-link {{ Request::is('admin.home') ? 'active' : '' }}  " href="{{ route('admin.home') }}"  data-placement="left">
                   <i class="bi-house-door nav-icon"></i>
                   <span class="nav-link-title">Dashboards</span>
                 </a>
-              {{-- </div> --}}
-              {{-- <div id="navbarVerticalMenuDashboards" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenu">
-                <a class="nav-link " href="./index.html">Default</a>
-                <a class="nav-link " href="./dashboard-alternative.html">Alternative</a>
-              </div> --}}
             </div>
             <!-- End Collapse -->
 
@@ -92,84 +76,23 @@
                     <!-- End Collapse -->
                     <!-- Collapse -->
                         <div class="nav-item">
-                            <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceImportMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceImportMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceImportMenu">
-                                Import
-                            </a>
-
-                            <div id="navbarVerticalMenuPagesEcommerceImportMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenuEcommerce">
-                                <a class="nav-link {{ Request::is('adminimport.index') ? 'active' : '' }}  " href="{{ route('adminimport.index') }}">Import</a>
-                                {{-- <a class="nav-link " href="./ecommerce-product-details.html">Product Details</a> --}}
-                                <a class="nav-link {{ Request::is('admin.insertimport') ? 'active' : '' }}  " href="{{ route('admin.insertimport') }}">Add Import</a>
-                            </div>
+                            <a class="nav-link {{ Request::is('adminimport.index') ? 'active' : '' }}  " href="{{ route('adminimport.index') }}">Import</a>
                         </div>
                     <!-- End Collapse -->
                     <div class="nav-item">
-                        <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceUserMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceUserMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceUserMenu">
-                            User
-                        </a>
-
-                        <div id="navbarVerticalMenuPagesEcommerceUserMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesEcommerceUserMenu">
-                            <a class="nav-link {{ Request::is('adminuser.index') ? 'active' : '' }}  " href="{{ route('adminuser.index') }}">User</a>
-                        </div>
+                        <a class="nav-link {{ Request::is('adminuser.index') ? 'active' : '' }}  " href="{{ route('adminuser.index') }}">User</a>
                     </div>
                     <div class="nav-item">
-                        <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceStockMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceStockMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceStockMenu">
-                            Stock
-                        </a>
-
-                        <div id="navbarVerticalMenuPagesEcommerceStockMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesEcommerceStockMenu">
-                            <a class="nav-link {{ Request::is('adminuser.index') ? 'active' : '' }}  " href="{{ route('adminuser.index') }}">Stock</a>
-                        </div>
+                        <a class="nav-link {{ Request::is('adminstock.index') ? 'active' : '' }}  " href="{{ route('adminstock.index') }}">Requisition </a>
                     </div>
                     <div class="nav-item">
-                        <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceCheckOrderMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceCheckOrderMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceCheckOrderMenu">
-                            CheckOrder
-                        </a>
-
-                        <div id="navbarVerticalMenuPagesEcommerceCheckOrderMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesEcommerceCheckOrderMenu">
-                            <a class="nav-link {{ Request::is('adminorder.index') ? 'active' : '' }}  " href="{{ route('adminorder.index') }}">Checkorder</a>
-                        </div>
+                        <a class="nav-link {{ Request::is('adminorder.index') ? 'active' : '' }}  " href="{{ route('adminorder.index') }}">Checkorder</a>
                     </div>
-                    <!-- Collapse -->
-                    {{-- <div class="nav-item">
-                      <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceOrdersMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceOrdersMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceOrdersMenu">
-                        Orders
-                      </a>
-
-                      <div id="navbarVerticalMenuPagesEcommerceOrdersMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenuEcommerce">
-                        <a class="nav-link " href="./ecommerce-orders.html">Orders</a>
-                        <a class="nav-link " href="./ecommerce-order-details.html">Order Details</a>
-                      </div>
-                    </div> --}}
-                    <!-- End Collapse -->
-
-                    <!-- Collapse -->
-                    {{-- <div class="nav-item">
-                      <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceCustomersMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceCustomersMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceCustomersMenu">
-                        Customers
-                      </a>
-
-                      <div id="navbarVerticalMenuPagesEcommerceCustomersMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenuEcommerce">
-                        <a class="nav-link " href="./ecommerce-customers.html">Customers</a>
-                        <a class="nav-link " href="./ecommerce-customer-details.html">Customer Details</a>
-                        <a class="nav-link " href="./ecommerce-add-customers.html">Add Customers</a>
-                      </div>
-                    </div> --}}
-                    <!-- End Collapse -->
                   </div>
 
-                  {{-- <a class="nav-link " href="./ecommerce-referrals.html">Referrals</a>
-                  <a class="nav-link " href="./ecommerce-manage-reviews.html">Manage Reviews</a>
-                  <a class="nav-link " href="./ecommerce-checkout.html">Checkout</a> --}}
                 </div>
               </div>
-              {{-- <div class="nav-item">
-                <a class="nav-link " href="./apps-kanban.html" data-placement="left">
-                  <i class="bi-kanban nav-icon"></i>
-                  <span class="nav-link-title">Kanban</span>
-                </a>
-              </div> --}}
-              <!-- End Collapse -->
+
 
           </div>
 

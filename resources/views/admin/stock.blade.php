@@ -7,7 +7,7 @@
         <div class="page-header">
           <div class="row align-items-center mb-3">
             <div class="col-sm mb-2 mb-sm-0">
-              <h1 class="page-header-title">Import <span class="badge bg-soft-dark text-dark ms-2"></span></h1>
+              <h1 class="page-header-title">Requisition  <span class="badge bg-soft-dark text-dark ms-2"></span></h1>
             </div>
             <!-- End Col -->
 
@@ -33,12 +33,12 @@
             <!-- Nav -->
             <ul class="nav nav-tabs page-header-tabs" id="pageHeaderTab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" id="nav-one-eg2-tab" href="#nav-one-eg2" data-bs-toggle="pill" data-bs-target="#nav-one-eg2" role="tab" aria-controls="nav-one-eg2" aria-selected="true" href="#">All Imports</a>
+                <a class="nav-link active" id="nav-one-eg2-tab" href="#nav-one-eg2" data-bs-toggle="pill" data-bs-target="#nav-one-eg2" role="tab" aria-controls="nav-one-eg2" aria-selected="true" href="#">All Requisition </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="nav-two-eg2-tab" href="#nav-two-eg2" data-bs-toggle="pill" data-bs-target="#nav-two-eg2" role="tab" aria-controls="nav-two-eg2" aria-selected="false">
                   <div class="d-flex align-items-center">
-                    Add Import
+                    Add Requisition
                   </div>
                 </a>
               </li>
@@ -121,15 +121,15 @@
                         <th scope="col" class="table-column-pe-0">
                             Number
                         </th>
-                        <th class="table-column-ps-0">Name</th>
-                        <th>Shopname</th>
-                        <th>Detail</th>
+                        <th class="table-column-ps-0">Detail</th>
+                        <th>Count</th>
+                        <th>Product</th>
                         <th>Date</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach ($import as $key=>$item)
+                        @foreach ($stock as $key=>$item)
                         <td class="table-column-pe-0">
                                 {{ ++$key }}
                         </td>
@@ -138,8 +138,8 @@
                                 <img height="300" width="300" src="{{ url('public/import/img/'.$item->img) }}" alt="">
                               </div>
                         </td>
-                        <td>{{ $item->shopname }}</td>
-                        <td>{{ $item->detail }}</td>
+                        <td>{{ $item->count }}</td>
+                        <td>{{ $item->product->name }}</td>
                         <td>{{ $item->created_at->format('d/m/Y') }}</td>
                         </tr>
                         @endforeach
@@ -161,7 +161,7 @@
                         <div class="d-flex justify-content-center justify-content-sm-end">
                         <!-- Pagination -->
                         <nav id="datatablePagination" aria-label="Activity pagination"></nav>
-                        {{ $import->links() }}
+                        {{ $stock->links() }}
                         </div>
                     </div>
                     <!-- End Col -->
@@ -172,26 +172,30 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-two-eg2" role="tabpanel" aria-labelledby="nav-two-eg2-tab">
-                <form method="POST" enctype="multipart/form-data" id="image-upload-preview" action="{{ route('adminimport.store') }}" >
+                <form method="POST" enctype="multipart/form-data" id="image-upload-preview" action="{{ route('adminstock.store') }}" >
                     @csrf
                 <!-- Form -->
                 <div class="mb-4">
-                  <label for="productNameLabel" class="form-label">Shopname</label>
+                    <label for="weightLabel" class="form-label">Product</label>
 
-                  <input type="text" class="form-control" name="shopname" id="shopname" placeholder="ชื่อร้านค้า" aria-label="ชื่อร้านค้า" required>
+                    <div class="input-group">
+                        {{-- <input type="text" class="form-control" name="typeproduct" id="typeproduct" placeholder="ประเภทสินค้า" aria-label="ประเภทสินค้า" required> --}}
+                        <select class="form-control"  name="product" id="product">
+                        @foreach ($product as $item)
+                        <option selected value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                        </select>
+
+                    </div>
 
                 </div>
                 <!-- End Form -->
+                <div class="mb-4">
+                    <label for="SKULabel" class="form-label">Count</label>
 
-                <div class="row">
-                  <!-- End Col -->
-
-                  <div class="mb-4">
-                    <label class="form-label">Detail <span class="form-label-secondary">(รายละเอียดใบสั่งซื้อ)</span></label>
-                    <textarea id="detail" type="text" class="form-control @error('detail') is-invalid @enderror" name="detail" value="{{ old('detail') }}" required autocomplete="detail" autofocus></textarea>
+                    <input type="text" class="form-control" name="count" id="count" placeholder="จำนวน" aria-label="จำนวน" required>
+                  @error('count') <div class="alert alert-danger">{{ $message }}</div> @enderror
                   </div>
-                  <!-- End Col -->
-                </div>
                 <!-- End Row -->
 
                 <div class="row">
