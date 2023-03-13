@@ -576,8 +576,6 @@
                       </div> --}}
                       <!-- End Dropdown -->
 
-                      <a class="dropdown-item" href="#">Profile &amp; account</a>
-                      <a class="dropdown-item" href="#">Settings</a>
 
                       {{-- <div class="dropdown-divider"></div>
 
