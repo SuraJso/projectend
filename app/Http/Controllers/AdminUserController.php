@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminUserController extends Controller
@@ -13,7 +14,8 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::paginate('10');
+        return view('admin.user')->with('user',$user);
     }
 
     /**
@@ -68,7 +70,18 @@ class AdminUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        if ($request->value == "user") {
+            $user->update([
+                'typeuserid' => 1
+            ]);
+        } elseif($request->value == "admin"){
+            $user->update([
+                'typeuserid' => 2
+            ]);
+        }
+        toast('อัพเดทสถานะเรียบร้อย','success');
+        return redirect()->route('adminorder.index');
     }
 
     /**

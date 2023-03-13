@@ -35,13 +35,6 @@
               <li class="nav-item">
                 <a class="nav-link active" id="nav-one-eg2-tab" href="#nav-one-eg2" data-bs-toggle="pill" data-bs-target="#nav-one-eg2" role="tab" aria-controls="nav-one-eg2" aria-selected="true" href="#">All users</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" id="nav-two-eg2-tab" href="#nav-two-eg2" data-bs-toggle="pill" data-bs-target="#nav-two-eg2" role="tab" aria-controls="nav-two-eg2" aria-selected="false">
-                  <div class="d-flex align-items-center">
-                    Edit
-                  </div>
-                </a>
-              </li>
             </ul>
             <!-- End Nav -->
           </div>
@@ -125,11 +118,13 @@
                         <th>email</th>
                         <th>Place</th>
                         <th>Tel</th>
+                        <th>Status</th>
+                        <th>Action</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach ($import as $key=>$item)
+                        @foreach ($user as $key=>$item)
                         <td class="table-column-pe-0">
                                 {{ ++$key }}
                         </td>
@@ -139,6 +134,29 @@
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->place }}</td>
                         <td>{{ $item->tel }}</td>
+                        <td>
+                        @if ($item->typeuserid == 1)
+                            <span class="badge badge-warning">ผู้ใช้งาน</span>
+                        @elseif ($item->typeuserid == 2)
+                            <span class="badge badge-info">แอดมิน</span>
+                        @endif
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <form action="{{ route('adminuser.update', $item->id) }}" method="post">
+                                    @csrf
+                                    @method('put')
+                                    <input type="hidden" name="value" value="admin">
+                                    <button class="btn btn-outline-danger" type="submit">แอดมิน</button>
+                                </form>
+                                <form action="{{ route('adminuser.update', $item->id) }}" method="post">
+                                    @csrf
+                                    @method('put')
+                                    <input type="hidden" name="value" value="user">
+                                    <button class="btn btn-outline-info"  type="submit">ผู้ใช้งาน</button>
+                                </form>
+                            </div>
+                        </td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -159,7 +177,7 @@
                         <div class="d-flex justify-content-center justify-content-sm-end">
                         <!-- Pagination -->
                         <nav id="datatablePagination" aria-label="Activity pagination"></nav>
-                        {{ $import->links() }}
+                        {{ $user->links() }}
                         </div>
                     </div>
                     <!-- End Col -->

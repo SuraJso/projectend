@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ImportController extends Controller
@@ -14,7 +15,7 @@ class ImportController extends Controller
     public function index()
     {
         $import = Product::with('typeproduct')->paginate('10');
-        return view('admin.import');
+        return view('admin.import')->with('import',$import);
     }
     public function addimport()
     {

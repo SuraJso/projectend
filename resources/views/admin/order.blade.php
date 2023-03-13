@@ -33,7 +33,7 @@
             <!-- Nav -->
             <ul class="nav nav-tabs page-header-tabs" id="pageHeaderTab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" href="#">All products</a>
+                <a class="nav-link active" href="#">All Orders</a>
               </li>
             </ul>
             <!-- End Nav -->

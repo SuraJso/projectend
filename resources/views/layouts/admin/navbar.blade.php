@@ -110,7 +110,6 @@
 
                         <div id="navbarVerticalMenuPagesEcommerceUserMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesEcommerceUserMenu">
                             <a class="nav-link {{ Request::is('adminuser.index') ? 'active' : '' }}  " href="{{ route('adminuser.index') }}">User</a>
-                            <a class="nav-link {{ Request::is('admintypeuser.index') ? 'active' : '' }}  " href="{{ route('admintypeuser.index') }}">Typeuser</a>
                         </div>
                     </div>
                     <div class="nav-item">
