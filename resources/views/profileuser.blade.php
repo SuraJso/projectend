@@ -25,7 +25,7 @@
               </div>
               <div class="card-body">
                 <ul class="nav nav-pills flex-column">
-                    <a href="customer-orders.html" class="nav-link {{ Request::is('order') ? 'active' : '' }}"><i class="fa fa-list"></i> My orders</a>
+                    <a href="{{ route('order.index') }}" class="nav-link {{ Request::is('order') ? 'active' : '' }}"><i class="fa fa-list"></i> My orders</a>
                     <a href="{{ route('profileuser.index') }}" class="nav-link {{ Request::is('profileuser') ? 'active' : '' }}"><i class="fa fa-user"></i> My account</a>
                     <a href="{{ route('logout')}}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> Logout</a></ul>
               </div>

@@ -41,8 +41,8 @@
           <!-- End Header -->
 
           <!-- Body -->
-          <div class="card-body">
-            <form method="POST" enctype="multipart/form-data" id="image-upload-preview" action="{{ url('admin/insertproduct') }}" >
+        <div class="card-body">
+        <form method="POST" enctype="multipart/form-data" id="image-upload-preview" action="{{ url('admin/insertproduct') }}" >
                 @csrf
             <!-- Form -->
             <div class="mb-4">
@@ -135,8 +135,8 @@
               </div>
             </div> --}}
             <!-- End Quill -->
-            </form>
-          </div>
+        </form>
+        </div>
           <!-- Body -->
         </div>
         <!-- End Card -->

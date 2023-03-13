@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\UserProfileController;
+use App\Models\Orders;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -40,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
     Route::resource('profileuser', UserProfileController::class);
     Route::resource('checkout', CheckoutController::class);
+    Route::resource('order', OrdersController::class);
 });
 
 
