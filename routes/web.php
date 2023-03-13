@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\TypeproductController;
+use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\AdminTypeUserController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -65,4 +68,8 @@ Route::middleware(['is_admin','auth'])->group(function () {
     Route::get('admin/inserttypeproduct/delete/{id}',[\App\Http\Controllers\Admin\TypeproductController::class, 'destroy'])->name('admin.inserttypeproduct.delete');
 
     Route::resource('adminimport', ImportController::class);
+    Route::resource('adminuser', AdminUserController::class);
+    Route::resource('admintypeuser', AdminTypeUserController::class);
+    Route::resource('adminorder', AdminOrderController::class);
+    Route::get('admin/insertimport', [\App\Http\Controllers\ImportController::class, 'addimport'])->name('admin.insertimport');
 });

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ImportController extends Controller
+class AdminTypeUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,12 +13,7 @@ class ImportController extends Controller
      */
     public function index()
     {
-        $import = Product::with('typeproduct')->paginate('10');
-        return view('admin.import');
-    }
-    public function addimport()
-    {
-
+        //
     }
 
     /**

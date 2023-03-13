@@ -90,7 +90,47 @@
                         </div>
                     </div>
                     <!-- End Collapse -->
+                    <!-- Collapse -->
+                        <div class="nav-item">
+                            <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceImportMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceImportMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceImportMenu">
+                                Import
+                            </a>
 
+                            <div id="navbarVerticalMenuPagesEcommerceImportMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenuEcommerce">
+                                <a class="nav-link {{ Request::is('adminimport.index') ? 'active' : '' }}  " href="{{ route('adminimport.index') }}">Import</a>
+                                {{-- <a class="nav-link " href="./ecommerce-product-details.html">Product Details</a> --}}
+                                <a class="nav-link {{ Request::is('admin.insertimport') ? 'active' : '' }}  " href="{{ route('admin.insertimport') }}">Add Import</a>
+                            </div>
+                        </div>
+                    <!-- End Collapse -->
+                    <div class="nav-item">
+                        <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceUserMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceUserMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceUserMenu">
+                            User
+                        </a>
+
+                        <div id="navbarVerticalMenuPagesEcommerceUserMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesEcommerceUserMenu">
+                            <a class="nav-link {{ Request::is('adminuser.index') ? 'active' : '' }}  " href="{{ route('adminuser.index') }}">User</a>
+                            <a class="nav-link {{ Request::is('admintypeuser.index') ? 'active' : '' }}  " href="{{ route('admintypeuser.index') }}">Typeuser</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceStockMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceStockMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceStockMenu">
+                            Stock
+                        </a>
+
+                        <div id="navbarVerticalMenuPagesEcommerceStockMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesEcommerceStockMenu">
+                            <a class="nav-link {{ Request::is('adminuser.index') ? 'active' : '' }}  " href="{{ route('adminuser.index') }}">Stock</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceCheckOrderMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceCheckOrderMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceCheckOrderMenu">
+                            CheckOrder
+                        </a>
+
+                        <div id="navbarVerticalMenuPagesEcommerceCheckOrderMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesEcommerceCheckOrderMenu">
+                            <a class="nav-link {{ Request::is('adminorder.index') ? 'active' : '' }}  " href="{{ route('adminorder.index') }}">Checkorder</a>
+                        </div>
+                    </div>
                     <!-- Collapse -->
                     {{-- <div class="nav-item">
                       <a class="nav-link dropdown-toggle" href="#navbarVerticalMenuPagesEcommerceOrdersMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesEcommerceOrdersMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesEcommerceOrdersMenu">

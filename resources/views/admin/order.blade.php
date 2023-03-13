@@ -7,13 +7,11 @@
         <div class="page-header">
           <div class="row align-items-center mb-3">
             <div class="col-sm mb-2 mb-sm-0">
-              <h1 class="page-header-title">Products <span class="badge bg-soft-dark text-dark ms-2">{{ $count }}</span></h1>
+              <h1 class="page-header-title">Order <span class="badge bg-soft-dark text-dark ms-2"></span></h1>
             </div>
             <!-- End Col -->
 
-            <div class="col-sm-auto">
-              <a class="btn btn-primary" href="{{ route('admin.insertproduct') }}">Add product</a>
-            </div>
+
             <!-- End Col -->
           </div>
           <!-- End Row -->
@@ -114,40 +112,74 @@
                   <th scope="col" class="table-column-pe-0">
                     Number
                   </th>
-                  <th class="table-column-ps-0">Product</th>
-                  <th>Detail</th>
-                  <th>Typeproduct</th>
-                  <th>Price</th>
+                  <th class="table-column-ps-0">Img</th>
+                  <th>status</th>
+                  <th>Total</th>
                   <th>Actions</th>
                 </tr>
               </thead>
 
               <tbody>
-                @foreach ($products as $key=>$product)
+                @foreach ($order as $key=>$item)
                   <td class="table-column-pe-0">
                         {{ ++$key }}
                   </td>
                   <td class="table-column-ps-0">
                     {{-- <a class="d-flex align-items-center" href="./ecommerce-product-details.html"> --}}
                       <div class="flex-shrink-0">
-                        <img class="avatar avatar-lg" src="{{ url('public/product/img/'.$product->img) }}" alt="Image Description">
-                      </div>
-                      <div class="flex-grow-1 ms-3">
-                        <h5 class="text-inherit mb-0">{{ $product->name }}</h5>
+                        <img height="300" width="300" src="{{ url('public/payment/img/'.$item->img) }}" alt="Image Description">
                       </div>
                     {{-- </a> --}}
                   </td>
-                  <td>{{ $product->detail }}</td>
-                  <td>{{ $product->typeproduct->name }}</td>
-                  <td>{{ $product->price }} บาท</td>
+                  <td>
+                        @if ($item->status == 1)
+                            <span class="badge badge-warning">รอชำระเงิน</span>
+                        @elseif ($item->status == 2)
+                            <span class="badge badge-info">แจ้งชำระเงินเรียบร้อย</span>
+                        @elseif ($item->status == 3)
+                            <span class="badge badge-warning">ชำระเงินไม่ผ่าน</span>
+                        @elseif ($item->status == 4)
+                            <span class="badge badge-info">กำลังจัดส่ง</span>
+                        @elseif ($item->status == 5)
+                        <span class="badge badge-success">จัดส่งเรียบร้อย</span>
+                        @elseif ($item->status == 6)
+                        <span class="badge badge-badge-danger">ยกเลิก</span>
+                        @endif
+                    </td>
+
+                  <td>{{ $item->total }} บาท</td>
                   <td>
                     <div class="btn-group" role="group">
-                      <a class="btn btn-white btn-sm confirmdelete" href="{{ route('admin.insertproduct.edit',$product->id) }}">
-                        <i class="bi-pencil-fill me-1"></i> Edit
-                      </a>
-                      <a  class="btn btn-white btn-sm" href="{{ route('admin.insertproduct.delete',$product->id) }}">
-                        <i class="bi-trash dropdown-item-icon"></i> Delete
-                      </a>
+                        <form action="{{ route('adminorder.update', $item->id) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <input type="hidden" name="value" value="success">
+                            <button class="btn btn-outline-info" type="submit">ชำระเงินเรียบร้อย</button>
+                        </form>
+                        <form action="{{ route('adminorder.update', $item->id) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <input type="hidden" name="value" value="delivery">
+                            <button class="btn btn-outline-info" type="submit">กำลังจัดส่ง</button>
+                        </form>
+                        <form action="{{ route('adminorder.update', $item->id) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <input type="hidden" name="value" value="deliverysuccess">
+                            <button class="btn btn-outline-success" type="submit">จัดส่งเรียบร้อย</button>
+                        </form>
+                        <form action="{{ route('adminorder.update', $item->id) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <input type="hidden" name="value" value="notpass">
+                            <button class="btn btn-outline-warning" type="submit">ไม่ผ่าน</button>
+                        </form>
+                        <form action="{{ route('adminorder.update', $item->id) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <input type="hidden" name="value" value="cancel">
+                            <button class="btn btn-outline-danger" type="submit">ยกเลิก</button>
+                        </form>
                     </div>
                   </td>
                 </tr>
@@ -170,7 +202,7 @@
                 <div class="d-flex justify-content-center justify-content-sm-end">
                   <!-- Pagination -->
                   <nav id="datatablePagination" aria-label="Activity pagination"></nav>
-                  {{ $products->links() }}
+                  {{ $order->links() }}
                 </div>
               </div>
               <!-- End Col -->

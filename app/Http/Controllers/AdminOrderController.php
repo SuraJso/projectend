@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Orders;
 use Illuminate\Http\Request;
 
-class ImportController extends Controller
+class AdminOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,12 +14,8 @@ class ImportController extends Controller
      */
     public function index()
     {
-        $import = Product::with('typeproduct')->paginate('10');
-        return view('admin.import');
-    }
-    public function addimport()
-    {
-
+        $order = Orders::with('order_details')->paginate('10');
+        return view('admin.order')->with('order',$order);
     }
 
     /**
@@ -73,7 +70,33 @@ class ImportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = Orders::where('id', $id)->first();
+        if ($request->value == "success") {
+            $order->update([
+                'status' => 2
+            ]);
+        } elseif($request->value == "delivery"){
+            $order->update([
+                'status' => 4
+            ]);
+        }
+        elseif($request->value == "deliverysuccess"){
+            $order->update([
+                'status' => 5
+            ]);
+        }
+        elseif($request->value == "notpass"){
+            $order->update([
+                'status' => 3
+            ]);
+        }
+        elseif($request->value == "cancel"){
+            $order->update([
+                'status' => 6
+            ]);
+        }
+        toast('อัพเดทสถานะเรียบร้อย','success');
+        return redirect()->route('adminorder.index');
     }
 
     /**
