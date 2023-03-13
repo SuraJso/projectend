@@ -63,7 +63,7 @@
             </div>
           </div>
         </div>
-        <div class="container">
+        {{-- <div class="container">
           <div class="product-slider owl-carousel owl-theme">
             <div class="item">
               <div class="product">
@@ -265,9 +265,9 @@
               <!-- /.product-->
             </div>
             <!-- /.product-slider-->
-          </div>
+        </div> --}}
 
-      <div class="container">
+        <div class="container">
         <div class="product-slider owl-carousel owl-theme">
         @foreach ($products as $item)
           <div class="item">

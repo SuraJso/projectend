@@ -234,7 +234,7 @@
 
                 @guest
                 @else
-                 <li class="nav-item"><a href="#" class="nav-link {{ Request::is('profile') ? 'active' : '' }}">Profile</a></li>
+                <li class="nav-item"><a href="{{ route('profileuser.index') }}" class="nav-link {{ Request::is('profileuser.index') ? 'active' : '' }}">Profile</a></li>
                 @endif
               </ul>
               <div class="navbar-buttons d-flex justify-content-end">

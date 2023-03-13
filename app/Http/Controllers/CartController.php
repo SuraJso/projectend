@@ -88,7 +88,7 @@ class CartController extends Controller
         $order->update([
             'total' => array_sum($total)
         ]);
-        return redirect()->route('category');
+        return redirect()->route('cart');
     }
 
     /**
@@ -124,9 +124,7 @@ class CartController extends Controller
     {
         $orderDetail = $order->order_details()->where('productid', $request->product_id)->first();
         if ($request->value == "checkout") {
-            $order->update([
-                'status' => 1
-            ]);
+            return redirect()->route('checkout.index');
         } else {
             if ($orderDetail) {
                 if ($request->value == "increase") {
@@ -160,7 +158,7 @@ class CartController extends Controller
                 'total' => array_sum($total)
             ]);
         }
-        return redirect()->route('home1');
+        return redirect()->route('cart');
     }
 
     /**
