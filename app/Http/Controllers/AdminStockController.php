@@ -39,17 +39,8 @@ class AdminStockController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->file('image')){
-            $file= $request->file('image');
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('public/import/img'), $filename);
-            $data['image']= $filename;
-        } else {
-            $data['image']= 'noimg.png';
-        }
         $stock = new Stocks;
         $stock->count = $request->input('count');
-        $stock->img = $data['image'];
         $stock->productid = $request->input('product');
         $stock->userid = Auth::id();
         $stock->save();
@@ -88,7 +79,12 @@ class AdminStockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $stock = Stocks::where('id', $id)->first();
+        $stock->update([
+            'count' => $request->count
+        ]);
+        toast('อัพเดทข้อมูลสำเร็จ','success');
+        return redirect()->back();
     }
 
     /**

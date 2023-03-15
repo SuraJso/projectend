@@ -9,6 +9,15 @@ class Imports extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'id',
+        'status',
+        'img',
+        'detail',
+        'userid',
+        'total',
+    ];
+
     public function username() {
         return $this->belongsTo(\App\Models\User::class,'id');
     }

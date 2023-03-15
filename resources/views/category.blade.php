@@ -36,24 +36,25 @@
             </div> --}}
             <div class="row products">
             @foreach ($products as $item)
-            @csrf
               <div class="col-lg-3 col-md-4">
                 <div class="product">
                 <form action="{{ route('cart.store') }}" method="post">
+                    @csrf
                   <div class="flip-container">
                     <div class="flipper">
-                      <div class="front"><a href="detail.html"><img src="{{ url('public/product/img/'.$item->img) }}" alt="" class="img-fluid"></a></div>
-                      <div class="back"><a href="detail.html"><img src="{{ url('public/product/img/'.$item->img) }}" alt="" class="img-fluid"></a></div>
+                      <div class="front"><a href="detail.html"><img src="{{ url('public/product/img/'.$item->product->img) }}" alt="" class="img-fluid"></a></div>
+                      <div class="back"><a href="detail.html"><img src="{{ url('public/product/img/'.$item->product->img) }}" alt="" class="img-fluid"></a></div>
                     </div>
-                  </div><a href="detail.html" class="invisible"><img src="{{ url('public/product/img/'.$item->img) }}" alt="" class="img-fluid"></a>
+                  </div><a href="detail.html" class="invisible"><img src="{{ url('public/product/img/'.$item->product->img) }}" alt="" class="img-fluid"></a>
                   <div class="text">
-                    <h3><a href="detail.html">{{ $item->name }}</a></h3>
+                    <h3><a href="detail.html">{{ $item->product->name }}</a></h3>
                     <p class="price">
-                      <del></del>{{ $item->price }} บาท
+                      <del></del>{{ $item->product->price }} บาท
                     </p>
-                    <p class="buttons"><a href="{{ route('categorydetail.edit',$item->id) }}" class="btn btn-outline-secondary">View detail</a>
-                    {{-- <input type="hidden" name="product_id" placeholder="" value="{{ $item->id }}">
-                    <button class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</button></p> --}}
+                    <p class="buttons"><a href="{{ route('categorydetail.edit',$item->product->id) }}" class="btn btn-outline-secondary">View detail</a>
+                    <input type="hidden" name="product_id" placeholder="" value="{{ $item->product->id }}">
+                    <button class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                    </p><p>จำนวนคงเหลือ {{ $item->count }}</a></p>
                   </div>
                 </form>
                   <!-- /.text-->

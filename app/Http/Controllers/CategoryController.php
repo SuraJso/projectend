@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Stocks;
 use App\Models\Typeproduct;
 class CategoryController extends Controller
 {
@@ -14,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(12);
+        $products = Stocks::paginate(12);
         return view('category',['products'=>$products]);
     }
 

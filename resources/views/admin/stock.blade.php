@@ -7,7 +7,7 @@
         <div class="page-header">
           <div class="row align-items-center mb-3">
             <div class="col-sm mb-2 mb-sm-0">
-              <h1 class="page-header-title">Requisition  <span class="badge bg-soft-dark text-dark ms-2"></span></h1>
+              <h1 class="page-header-title">Stocks  <span class="badge bg-soft-dark text-dark ms-2"></span></h1>
             </div>
             <!-- End Col -->
 
@@ -33,12 +33,12 @@
             <!-- Nav -->
             <ul class="nav nav-tabs page-header-tabs" id="pageHeaderTab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" id="nav-one-eg2-tab" href="#nav-one-eg2" data-bs-toggle="pill" data-bs-target="#nav-one-eg2" role="tab" aria-controls="nav-one-eg2" aria-selected="true" href="#">All Requisition </a>
+                <a class="nav-link active" id="nav-one-eg2-tab" href="#nav-one-eg2" data-bs-toggle="pill" data-bs-target="#nav-one-eg2" role="tab" aria-controls="nav-one-eg2" aria-selected="true" href="#">All Stocks </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="nav-two-eg2-tab" href="#nav-two-eg2" data-bs-toggle="pill" data-bs-target="#nav-two-eg2" role="tab" aria-controls="nav-two-eg2" aria-selected="false">
                   <div class="d-flex align-items-center">
-                    Add Requisition
+                    Add Stocks
                   </div>
                 </a>
               </li>
@@ -96,7 +96,6 @@
                     </div>
                 </div>
                 <!-- End Header -->
-
                 <!-- Table -->
                 <div class="table-responsive datatable-custom">
                     <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table" data-hs-datatables-options='{
@@ -125,6 +124,7 @@
                         <th>Count</th>
                         <th>Product</th>
                         <th>Date</th>
+                        <th>Action</th>
                         </tr>
                     </thead>
 
@@ -135,19 +135,24 @@
                         </td>
                         <td class="table-column-ps-0">
                             <div class="flex-shrink-0">
-                                <img height="300" width="300" src="{{ url('public/import/img/'.$item->img) }}" alt="">
+                                <img height="300" width="300" src="{{ url('public/product/img/'.$item->product->img) }}" alt="">
                               </div>
                         </td>
                         <td>{{ $item->count }}</td>
                         <td>{{ $item->product->name }}</td>
                         <td>{{ $item->created_at->format('d/m/Y') }}</td>
+                        <td>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editmodal{{ $item->id }}">
+                                Edit
+                            </button>
+                        </td>
                         </tr>
                         @endforeach
                     </tbody>
                     </table>
                 </div>
                 <!-- End Table -->
-
                 <!-- Footer -->
                 <div class="card-footer">
                     <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
@@ -171,8 +176,37 @@
                 <!-- End Footer -->
                 </div>
             </div>
+            @foreach ($stock as $item)
+            <!-- Modal -->
+            <div class="modal fade" id="editmodal{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <form action="{{ route('adminstock.update',$item->id) }}" method="POST">
+                    @csrf
+                    @method('put')
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">แก้ไขข้อมูล {{ $item->product->name }}</h1>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-4">
+                                <label for="SKULabel" class="form-label">Count</label>
+
+                                <input type="text" class="form-control" name="count" id="count" placeholder="จำนวน" aria-label="จำนวน" required>
+                              @error('count') <div class="alert alert-danger">{{ $message }}</div> @enderror
+                              </div>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+            <!-- ADD -->
+            @endforeach
             <div class="tab-pane fade" id="nav-two-eg2" role="tabpanel" aria-labelledby="nav-two-eg2-tab">
-                <form method="POST" enctype="multipart/form-data" id="image-upload-preview" action="{{ route('adminstock.store') }}" >
+                <form method="POST" action="{{ route('adminstock.store') }}" >
                     @csrf
                 <!-- Form -->
                 <div class="mb-4">
@@ -198,24 +232,6 @@
                   </div>
                 <!-- End Row -->
 
-                <div class="row">
-                    <div class="col-sm-12">
-                      <!-- Form -->
-                      <div class="mb-4">
-                        <label for="image" class="form-label">Img</label>
-
-                        <input type="file" class="form-control" name="image" id="image">
-                      </div>
-
-                      <!-- End Form -->
-                    </div>
-                    <!-- End Col -->
-                    <div class="col-md-12 mb-2">
-                        <img id="preview-image-before-upload" src="{{ url('public/product/img/noimg.png') }}"
-                            alt="preview image" style="max-height: 250px;">
-                    </div>
-                </div>
-                <!-- End Row -->
 
                 <div class="row">
 

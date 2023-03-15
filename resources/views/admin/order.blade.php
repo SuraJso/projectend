@@ -150,36 +150,12 @@
                   <td>{{ $item->total }} บาท</td>
                   <td>
                     <div class="btn-group" role="group">
-                        <form action="{{ route('adminorder.update', $item->id) }}" method="post">
-                            @csrf
-                            @method('put')
-                            <input type="hidden" name="value" value="success">
-                            <button class="btn btn-outline-info" type="submit">ชำระเงินเรียบร้อย</button>
-                        </form>
-                        <form action="{{ route('adminorder.update', $item->id) }}" method="post">
-                            @csrf
-                            @method('put')
-                            <input type="hidden" name="value" value="delivery">
-                            <button class="btn btn-outline-info" type="submit">กำลังจัดส่ง</button>
-                        </form>
-                        <form action="{{ route('adminorder.update', $item->id) }}" method="post">
-                            @csrf
-                            @method('put')
-                            <input type="hidden" name="value" value="deliverysuccess">
-                            <button class="btn btn-outline-success" type="submit">จัดส่งเรียบร้อย</button>
-                        </form>
-                        <form action="{{ route('adminorder.update', $item->id) }}" method="post">
-                            @csrf
-                            @method('put')
-                            <input type="hidden" name="value" value="notpass">
-                            <button class="btn btn-outline-warning" type="submit">ไม่ผ่าน</button>
-                        </form>
-                        <form action="{{ route('adminorder.update', $item->id) }}" method="post">
-                            @csrf
-                            @method('put')
-                            <input type="hidden" name="value" value="cancel">
-                            <button class="btn btn-outline-danger" type="submit">ยกเลิก</button>
-                        </form>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editmodal{{ $item->id }}">
+                            รายละเอียด
+                        </button>
+                        </div>
                     </div>
                   </td>
                 </tr>
@@ -188,7 +164,90 @@
             </table>
           </div>
           <!-- End Table -->
-
+        @foreach ($order as $item)
+        <!-- Modal -->
+        <div class="modal fade" id="editmodal{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                @csrf
+                @method('put')
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">รายละเอียด</h1>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-responsive mb-4">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th colspan="2">Product</th>
+                                  <th>Quantity</th>
+                                  <th colspan="3">Unit price</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                @foreach ($item->order_details as $items)
+                              <tr>
+                                <td><a href="#"><img height="250" width="300" src="{{ url('public/product/img/'.$items->product->img) }}" alt="{{ $items->product->name }}"></a></td>
+                                <td><a href="#">{{ $items->product->name }}</a></td>
+                                <td>
+                                    {{ $items->amount }}
+                                </td>
+                                <td colspan="3">{{ $items->price }}</td>
+                              </tr>
+                              @endforeach
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                  <th colspan="5" class="text-right">Total</th>
+                                  <th>{{ $item->total }} บาท</th>
+                                </tr>
+                                <tr>
+                              </tfoot>
+                            </table>
+                          </div>
+                        <div class="mb-8">
+                            <div class="btn-group" role="group">
+                            <form action="{{ route('adminorder.update', $item->id) }}" method="post">
+                                @csrf
+                                @method('put')
+                                <input type="hidden" name="value" value="success">
+                                <button class="btn btn-outline-info" type="submit">ชำระเงินเรียบร้อย</button>
+                            </form>
+                            <form action="{{ route('adminorder.update', $item->id) }}" method="post">
+                                @csrf
+                                @method('put')
+                                <input type="hidden" name="value" value="delivery">
+                                <button class="btn btn-outline-info" type="submit">กำลังจัดส่ง</button>
+                            </form>
+                            <form action="{{ route('adminorder.update', $item->id) }}" method="post">
+                                @csrf
+                                @method('put')
+                                <input type="hidden" name="value" value="deliverysuccess">
+                                <button class="btn btn-outline-success" type="submit">จัดส่งเรียบร้อย</button>
+                            </form>
+                            <form action="{{ route('adminorder.update', $item->id) }}" method="post">
+                                    @csrf
+                                    @method('put')
+                                    <input type="hidden" name="value" value="notpass">
+                                    <button class="btn btn-outline-warning" type="submit">ไม่ผ่าน</button>
+                            </form>
+                            <form action="{{ route('adminorder.update', $item->id) }}" method="post">
+                                @csrf
+                                @method('put')
+                                <input type="hidden" name="value" value="cancel">
+                                <button class="btn btn-outline-danger" type="submit">ยกเลิก</button>
+                            </form>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+        <!-- ADD -->
           <!-- Footer -->
           <div class="card-footer">
             <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
@@ -217,40 +276,7 @@
 
       <!-- Footer -->
 
-      <div class="footer">
-        <div class="row justify-content-between align-items-center">
-          <div class="col">
-            <p class="fs-6 mb-0">&copy; Front. <span class="d-none d-sm-inline-block">2022 Htmlstream.</span></p>
-          </div>
-          <!-- End Col -->
 
-          <div class="col-auto">
-            <div class="d-flex justify-content-end">
-              <!-- List Separator -->
-              <ul class="list-inline list-separator">
-                <li class="list-inline-item">
-                  <a class="list-separator-link" href="#">FAQ</a>
-                </li>
-
-                <li class="list-inline-item">
-                  <a class="list-separator-link" href="#">License</a>
-                </li>
-
-                <li class="list-inline-item">
-                  <!-- Keyboard Shortcuts Toggle -->
-                  <button class="btn btn-ghost-secondary btn btn-icon btn-ghost-secondary rounded-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasKeyboardShortcuts" aria-controls="offcanvasKeyboardShortcuts">
-                    <i class="bi-command"></i>
-                  </button>
-                  <!-- End Keyboard Shortcuts Toggle -->
-                </li>
-              </ul>
-              <!-- End List Separator -->
-            </div>
-          </div>
-          <!-- End Col -->
-        </div>
-        <!-- End Row -->
-      </div>
 
       <!-- End Footer -->
 @endsection

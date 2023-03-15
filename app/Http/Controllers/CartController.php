@@ -6,7 +6,9 @@ use App\Models\Orders;
 use App\Models\Ordersdetails;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Stocks;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
 {
@@ -40,15 +42,20 @@ class CartController extends Controller
     public function store(Request $request)
     {
         $product = Product::find($request->product_id);
+        $stock = Stocks::where('productid', $request->product_id)->first();
         $order = Orders::where('userid', Auth::id())->where('status', 0)->first();
 
         if ($order) {
             $orderDetail = $order->order_details()->where('productid', $product->id)->first();
             if ($orderDetail) {
-                $amountNew = $orderDetail->amount + 1;
-                $orderDetail->update([
-                    'amount' => $amountNew
-                ]);
+                        if($orderDetail->amount >= $stock->count){
+                            Alert::error('ของไม่เพียงพอ!');
+                        }else{
+                        $amountNew = $orderDetail->amount + 1;
+                        $orderDetail->update([
+                            'amount' => $amountNew
+                        ]);
+                    }
             } else {
                 $prepareCartDetail = [
                     'orderid' => $order->id,
@@ -79,6 +86,7 @@ class CartController extends Controller
         }
 
         $totalRaw = 0;
+
         $total = $order->order_details->map(function ($orderDetail) use ($totalRaw) {
             // totalRaw = totalRaw +  $orderDetail->amount * $orderDetail->price;
             $totalRaw += $orderDetail->amount * $orderDetail->price;
@@ -88,6 +96,7 @@ class CartController extends Controller
         $order->update([
             'total' => array_sum($total)
         ]);
+
         return redirect()->route('cart');
     }
 
@@ -123,25 +132,32 @@ class CartController extends Controller
     public function update(Request $request,Orders $order)
     {
         $orderDetail = $order->order_details()->where('productid', $request->product_id)->first();
+        $stock = Stocks::where('productid', $request->product_id)->first();
         if ($request->value == "checkout") {
             return redirect()->route('checkout.index');
         } else {
             if ($orderDetail) {
                 if ($request->value == "increase") {
-                    $amountNew = $orderDetail->amount + 1;
-                    $orderDetail->update([
-                        'amount' => $amountNew
-                    ]);
-                }
-                else
-                {
-                    if ($orderDetail->amount <= 1) {
-                        $orderDetail->delete();
-                    } else {
-                        $amountNew = $orderDetail->amount - 1;
+                    if($orderDetail->amount >= $stock->count){
+                        Alert::error('ของไม่เพียงพอ!');
+                    }else{
+                        $amountNew = $orderDetail->amount + 1;
                         $orderDetail->update([
                             'amount' => $amountNew
                         ]);
+                    }
+                }
+                else
+                {
+                    if ($request->value == "decrease"){
+                        if ($orderDetail->amount <= 1) {
+                            $orderDetail->delete();
+                        } else {
+                            $amountNew = $orderDetail->amount - 1;
+                            $orderDetail->update([
+                                'amount' => $amountNew
+                            ]);
+                        }
                     }
                 }
             }
@@ -153,7 +169,6 @@ class CartController extends Controller
                 $totalRaw += $orderDetail->amount * $orderDetail->price;
                 return $totalRaw;
             })->toarray();
-
             $order->update([
                 'total' => array_sum($total)
             ]);
