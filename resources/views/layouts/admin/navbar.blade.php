@@ -83,7 +83,7 @@
                         <a class="nav-link {{ Request::is('adminuser.index') ? 'active' : '' }}  " href="{{ route('adminuser.index') }}">User</a>
                     </div>
                     <div class="nav-item">
-                        <a class="nav-link {{ Request::is('adminstock.index') ? 'active' : '' }}  " href="{{ route('adminstock.index') }}">Requisition </a>
+                        <a class="nav-link {{ Request::is('adminstock.index') ? 'active' : '' }}  " href="{{ route('adminstock.index') }}">Stock </a>
                     </div>
                     <div class="nav-item">
                         <a class="nav-link {{ Request::is('adminorder.index') ? 'active' : '' }}  " href="{{ route('adminorder.index') }}">Checkorder</a>
